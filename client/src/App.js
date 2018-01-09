@@ -7,6 +7,7 @@ import {
 import './App.css'
 import Nav from './Nav'
 import Dashboard from './Dashboard'
+import Login from './Login'
 
 class App extends Component {
   render () {
@@ -17,6 +18,9 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={() => (
               <Dashboard />
+            )} />
+            <Route exact path='/login' render={() => (
+              <Login />
             )} />
           </Switch>
         </main>

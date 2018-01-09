@@ -6,6 +6,8 @@ class Nav extends Component {
     return (
       <nav>
         <Link to='/'>Home</Link>
+        <Link to='/login'>Login</Link>
+
       </nav>
     )
   }
