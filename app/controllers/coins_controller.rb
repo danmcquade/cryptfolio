@@ -9,7 +9,6 @@ class CoinsController < ApplicationController
       url = "https://api.coinmarketcap.com/v1/ticker/#{coin.api_id}/"
       resp = Net::HTTP.get_response(URI.parse(url))
       data = JSON.parse(resp.body)
-      puts data
       @coin_data.push(data[0])
     end
     render json: @coin_data
