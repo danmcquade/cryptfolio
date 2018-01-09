@@ -10,7 +10,7 @@ class CoinsController < ApplicationController
       resp = Net::HTTP.get_response(URI.parse(url))
       data = JSON.parse(resp.body)
       puts data
-      @coin_data.push(data)
+      @coin_data.push(data[0])
     end
     render json: @coin_data
   end
