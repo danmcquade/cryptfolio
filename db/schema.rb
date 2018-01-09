@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180109192924) do
   create_table "coins", force: :cascade do |t|
     t.string "name"
     t.string "symbol"
+    t.string "api_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
