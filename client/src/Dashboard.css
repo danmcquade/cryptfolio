@@ -1,0 +1,8 @@
+.coins-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 75%;
+    margin: 0 auto;
+    justify-content: center;
+    text-align: left;
+}

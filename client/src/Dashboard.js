@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
+import './Dashboard.css'
 
 class Dashboard extends Component {
   constructor (props) {
@@ -8,13 +9,33 @@ class Dashboard extends Component {
       coins: [],
       login: false
     }
-    this.setLogin = this.setLogin.bind(this)
+    this.login = this.login.bind(this)
   }
 
-  setLogin () {
-    let status = this.state.login
-    this.setState({
-      login: !status
+  login () {
+    const email = 'test@test.com'
+    const password = 'password'
+    const request = {'auth': {'email': email, 'password': password}}
+    console.log(request)
+    $.ajax({
+      url: 'http://localhost:3001/api/user_token',
+      type: 'POST',
+      data: request,
+      dataType: 'json',
+      success: function (result) {
+        console.log(result)
+        localStorage.setItem('jwt', result.jwt)
+        $('.loginform').hide()
+        $('.notification').empty()
+        $('.notification').append('<strong>Login successful</strong>')
+        this.setState({login: true})
+        this.getBananas()
+      }.bind(this),
+      error: function(xhr) {
+        $('.notification').empty()
+        $('.notification').append('<strong>Login failed</strong>')
+        console.log('Login failed')
+      }
     })
   }
 
@@ -25,7 +46,7 @@ class Dashboard extends Component {
       context: this, // Allows us to use this.setState inside success
       success: function (result) {
         console.log(result)
-        this.setState({coins: JSON.stringify(result)})
+        this.setState({coins: JSON.parse(JSON.stringify(result))})
       },
       error: function (xhr) {
         console.log('Fetch failed')
@@ -34,17 +55,24 @@ class Dashboard extends Component {
   }
 
   render () {
+    const allCoins = this.state.coins.map((coin, index) => {
+      let divStyle = {
+        margin: '35px'
+      }
+      return (
+        <div className='coin-detail' key={index} style={divStyle}>
+          <p><strong>Name:</strong> {coin.name}</p>
+          <p><strong>Symbol:</strong> {coin.symbol}</p>
+          <p><strong>Price:</strong> {coin.price_usd}</p>
+        </div>
+      )
+    })
     return (
       <div>
         <h1>Dashboard</h1>
-        <button
-          onClick={this.setLogin}
-          style={{marginTop: '10vh'}}
-        >
-          Get Bananas
-        </button>
-        <p>{this.state.login ? "true" : "false"}</p>
-        <p>{this.state.coins}</p>
+        <div className='coins-container'>
+          {allCoins}
+        </div>
       </div>
     )
   }
