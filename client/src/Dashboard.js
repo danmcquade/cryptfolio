@@ -11,10 +11,6 @@ class Dashboard extends Component {
     }
   }
 
-  currencyFormat (num) {
-    return num.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
-  }
-
   componentDidMount () {
     $.ajax({
       url: 'http://localhost:3001/api/coins',
@@ -46,7 +42,7 @@ class Dashboard extends Component {
         <div className='coin-detail' key={index} style={divStyle}>
           <p><strong>Name:</strong> {coin.name}</p>
           <p><strong>Symbol:</strong> {coin.symbol}</p>
-          <p><strong>Price (USD):</strong> ${this.currencyFormat(parseFloat(coin.price_usd))}</p>
+          <p><strong>Price (USD):</strong> ${this.props.currencyFormat(parseFloat(coin.price_usd))}</p>
           <p><strong>Change (24H): <span style={changeColor}>{parseFloat(coin.percent_change_24h) > 0 ? '+' : null}{parseFloat(coin.percent_change_24h).toFixed(2)}%</span></strong></p>
         </div>
       )

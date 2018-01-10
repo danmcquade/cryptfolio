@@ -1,0 +1,11 @@
+.positions {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  flex-wrap: wrap;
+}
+
+.position-detail {
+  width: 225px;
+  margin: 15px;
+}
