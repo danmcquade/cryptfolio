@@ -41,7 +41,7 @@ class Dashboard extends Component {
     const allCoins = this.state.coins.map((coin, index) => {
       let divStyle = {
         margin: '15px',
-        width: '160px'
+        width: '175px'
       }
       let changeColor = {}
       if (coin.percent_change_24h > 0) {
@@ -50,7 +50,6 @@ class Dashboard extends Component {
         changeColor = {color: 'red'}
       }
       let price = coin.price_usd
-      console.log(parseFloat(price))
       return (
         <div className='coin-detail' key={index} style={divStyle}>
           <p><strong>Name:</strong> {coin.name}</p>

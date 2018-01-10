@@ -8,9 +8,7 @@ class Login extends Component {
       bananasReceived: '',
       loggedIn: false
     }
-    this.login = this.login.bind(this)
   }
-
 
   login () {
     const email = $('#email').val()
@@ -24,8 +22,9 @@ class Login extends Component {
       dataType: 'json',
       success: function (result) {
         console.log(result)
-        localStorage.setItem('jwt', result.jwt)
+        localStorage.setItem('cryptfolio-jwt', result.jwt)
         $('.loginform').hide()
+        $('.logout').show()
         $('.notification').empty()
         $('.notification').append('<strong>Login successful</strong>')
         this.setState({loggedIn: true})
@@ -36,12 +35,36 @@ class Login extends Component {
         console.log('Login failed')
       }
     })
+  }
+
+  logout () {
+    console.log('Clearing local storage...')
+    localStorage.removeItem('cryptfolio-jwt')
+    $('.notification').empty()
+    $('.notification').append('<strong>Logged out</strong>')
+    console.log('Logged out.')
+    $('.loginform').show()
+    $('.logout').hide()
+  }
+
+  componentDidMount () {
+    $('.logout').hide()
+    console.log('Login Component Mounted!')
+    if (!localStorage.getItem('cryptfolio-jwt')) {
+      console.log('Not logged in')
+    } else {
+      console.log('We have a token!')
+      this.setState({loggedIn: true})
+      $('.loginform').hide()
+      $('.logout').show()
     }
+  }
 
   render () {
     return (
       <div>
         <p className='notification' />
+        <p><strong>Login Status: {this.state.loggedIn ? 'true' : 'false'}</strong></p>
         <div className='loginform'>
           <form>
             <label htmlFor='email'>Email: </label>
@@ -61,9 +84,10 @@ class Login extends Component {
             />
           </form>
           <br />
-          <button
-            onClick={this.login}
-          >Login</button>
+          <button onClick={this.login}>Login</button>
+        </div>
+        <div className='logout'>
+          <button onClick={this.logout}>Logout</button>
         </div>
       </div>
     )
