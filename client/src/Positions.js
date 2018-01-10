@@ -8,6 +8,7 @@ class Positions extends Component {
     this.state = {
       positions: [],
       mine: [],
+      whoami: '',
       loggedIn: false
     }
     this.click = this.click.bind(this)
@@ -22,6 +23,7 @@ class Positions extends Component {
       console.log('We have a token!')
       this.setState({loggedIn: true})
       this.getPositions()
+      this.whoAmI()
     }
   }
 
@@ -45,6 +47,24 @@ class Positions extends Component {
         console.log('Fetch positions from API failed')
       }
     })
+  }
+
+  whoAmI () {
+    let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
+    $.ajax({
+      url: 'http://localhost:3001/api/whoami',
+      type: 'GET',
+      beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
+      context: this,
+      success: function (result) {
+        console.log(result)
+        this.setState({whoami: JSON.parse(JSON.stringify(result))})
+      },
+      error: function (xhr) {
+        console.log('Fetch user data from API failed')
+      }
+    })
+
   }
 
   render () {
@@ -71,6 +91,7 @@ class Positions extends Component {
     return (
       <div>
         <h1>Positions</h1>
+        <h3>Positions for {this.state.whoami.name}</h3>
         <div className='positions'>
           {allPositions}
         </div>

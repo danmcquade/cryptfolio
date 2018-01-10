@@ -1,7 +1,9 @@
 require "net/http"
 
 class PositionsController < ApplicationController
+
   before_action :authenticate_user
+
   def index
     @position_data = []
     @positions = current_user.positions.all
@@ -16,4 +18,11 @@ class PositionsController < ApplicationController
     end
     render json: @position_data
   end
+
+  def whoami
+    @user = current_user
+    @user_data = {email: @user.email, name: @user.name}
+    render json: @user_data
+  end
+
 end
