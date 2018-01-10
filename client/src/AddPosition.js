@@ -19,7 +19,6 @@ class AddPosition extends Component {
     let price = e.target[2].value
     let date = e.target[3].value
     newPosition = {currency: currency, shares: shares, purchase_price: price, purchase_date: date}
-    console.log(newPosition)
     const goBack = function () {
       this.props.history.push('/positions')
     }.bind(this)
@@ -31,11 +30,10 @@ class AddPosition extends Component {
         data: this.state.position,
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
         success: function (result) {
-          console.log('New position posted')
           goBack()
         },
         error: function (xhr) {
-          console.log('Fetch user data from API failed')
+          console.log('Post new position failed')
         }
       })
     })
@@ -47,11 +45,10 @@ class AddPosition extends Component {
       type: 'GET',
       context: this, // Allows us to use this.setState inside success
       success: function (result) {
-        console.log(result)
         this.setState({currencies: JSON.parse(JSON.stringify(result))})
       },
       error: function (xhr) {
-        console.log('Fetching API data failed')
+        console.log('Fetching currency list from API failed')
       }
     })
   }
@@ -66,7 +63,6 @@ class AddPosition extends Component {
     return (
       <div>
         <h1>New Position</h1>
-        <button onClick={() => { this.click() }}>Click</button>
         <form onSubmit={this.handleSubmit}>
           <p>Currency <select name='currency'>{currencies}</select></p>
           <p>Shares <input type='text' name='shares' /></p>
