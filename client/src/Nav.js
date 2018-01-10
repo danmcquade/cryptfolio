@@ -8,7 +8,7 @@ class Nav extends Component {
       <nav>
         <Link to='/' >Home</Link>
         <Link to='/positions'>Positions</Link>
-        <Link to='/login'>Login</Link>
+        <Link to='/login' className='push-right'>Login</Link>
       </nav>
     )
   }

@@ -33,6 +33,10 @@ nav .push-left {
 	margin-right: auto;
 }
 
+nav .push-right {
+	margin-left: auto;
+}
+
 .nav-logo {
 	max-width: 150px;
 	position: absolute;
