@@ -9,6 +9,12 @@ class PositionsController < ApplicationController
     render json: @positions
   end
 
+  def create
+    user = current_user
+    coin = Coin.find_by(symbol: params["currency"])
+    user.positions.create(shares: params["shares"], purchase_price: params["purchase_price"], purchase_date: params["purchase_date"], coin_id: coin.id)
+  end
+
   def whoami
     @user = current_user
     @user_data = {email: @user.email, name: @user.name}

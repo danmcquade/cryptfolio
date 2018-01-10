@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import {
   Redirect,
   Route,
-  Switch
+  Switch,
+  withRouter
 } from 'react-router-dom'
 import './App.css'
-import Nav from './Nav'
+import AddPosition from './AddPosition'
 import Dashboard from './Dashboard'
-import Positions from './Positions'
 import Login from './Login'
+import Nav from './Nav'
+import Positions from './Positions'
 
 class App extends Component {
   currencyFormat (num) {
@@ -30,6 +32,9 @@ class App extends Component {
             <Route exact path='/positions' render={() => (
               <Positions currencyFormat={this.currencyFormat} />
             )} />
+            <Route exact path='/positions/new' render={(props) => (
+              <AddPosition currencyFormat={this.currencyFormat} {...props} />
+            )} />
             <Route path='/*' render={() => (<Redirect to='/' />)} />
           </Switch>
         </main>
@@ -38,4 +43,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default withRouter(App)
