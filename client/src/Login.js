@@ -8,6 +8,7 @@ class Login extends Component {
       bananasReceived: '',
       loggedIn: false
     }
+    this.login = this.login.bind(this)
   }
 
   login () {
