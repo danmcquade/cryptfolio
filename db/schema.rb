@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180109192924) do
 
   create_table "positions", force: :cascade do |t|
     t.integer "shares"
-    t.decimal "purchase_price"
+    t.money "purchase_price", scale: 2
     t.date "purchase_date"
     t.bigint "user_id"
     t.bigint "coin_id"
