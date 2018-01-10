@@ -7,8 +7,8 @@ class Positions extends Component {
     super(props)
     this.state = {
       positions: [],
-      mine: [],
-      whoami: '',
+      summary: null,
+      whoami: null,
       loggedIn: false
     }
     this.click = this.click.bind(this)
@@ -23,6 +23,7 @@ class Positions extends Component {
       console.log('We have a token!')
       this.setState({loggedIn: true})
       this.getPositions()
+      this.getPositionsSummary()
       this.whoAmI()
     }
   }
@@ -49,6 +50,24 @@ class Positions extends Component {
     })
   }
 
+  getPositionsSummary () {
+    let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
+    console.log(token)
+    $.ajax({
+      url: 'http://localhost:3001/api/positions/summary',
+      type: 'GET',
+      beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
+      context: this,
+      success: function (result) {
+        console.log(result)
+        this.setState({summary: JSON.parse(JSON.stringify(result))})
+      },
+      error: function (xhr) {
+        console.log('Fetch positions from API failed')
+      }
+    })
+  }
+
   whoAmI () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
@@ -57,7 +76,6 @@ class Positions extends Component {
       beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
       context: this,
       success: function (result) {
-        console.log(result)
         this.setState({whoami: JSON.parse(JSON.stringify(result))})
       },
       error: function (xhr) {
@@ -88,15 +106,32 @@ class Positions extends Component {
         </div>
       )
     })
-    return (
-      <div>
-        <h1>Positions</h1>
-        <h3>Positions for {this.state.whoami.name}</h3>
-        <div className='positions'>
-          {allPositions}
+
+    if (this.state.summary == null){
+      return (
+        <h3>Loading...</h3>
+      )
+    } else {
+
+      let positionsGainLoss = this.state.summary.current_value - this.state.summary.original_value
+      let pglColor = {}
+      if (positionsGainLoss > 0) {
+        pglColor = {color: 'green'}
+      } else {
+        pglColor = {color: 'red'}
+      }
+
+      return (
+        <div>
+          <h1>Positions</h1>
+          <h3>Positions for {this.state.whoami.name}</h3>
+          <h3>Total: ${this.props.currencyFormat(parseFloat(this.state.summary.current_value))} (<span style={pglColor}>{positionsGainLoss > 0 ? '+' : null}${this.props.currencyFormat(positionsGainLoss)}</span>)</h3>
+          <div className='positions'>
+            {allPositions}
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
   }
 
