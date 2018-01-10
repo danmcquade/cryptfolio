@@ -11,7 +11,28 @@ class Positions extends Component {
       whoami: null,
       loggedIn: false
     }
-    this.click = this.click.bind(this)
+  }
+
+  deletePosition (id) {
+    var check = window.confirm('Are you sure you want to delete this position?')
+    if (check === true) {
+      console.log('Deleteing position id: ' + id)
+      let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
+      $.ajax({
+        url: 'http://localhost:3001/api/positions/delete/' + id,
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
+        context: this,
+        success: function (result) {
+          console.log(result)
+          this.setState({positions: JSON.parse(JSON.stringify(result))})
+          this.getPositionsSummary()
+        },
+        error: function (xhr) {
+          console.log('Delete position API call failed')
+        }
+      })
+    }
   }
 
   componentDidMount () {
@@ -29,7 +50,7 @@ class Positions extends Component {
   }
 
   click () {
-    console.log(JSON.parse(this.state.mine))
+    console.log(JSON.parse(this.state.whoami))
   }
 
   getPositions () {
@@ -94,7 +115,6 @@ class Positions extends Component {
       } else {
         gainColor = {color: 'red'}
       }
-
       return (
         <div className='position-detail' key={index}>
           <p><strong>{pos.name} ({pos.symbol})</strong></p>
@@ -103,13 +123,17 @@ class Positions extends Component {
           <p><strong>Current value: </strong>${this.props.currencyFormat(parseFloat(pos.value))}</p>
           <p><strong>Gain/Loss: <span style={gainColor}>${this.props.currencyFormat(gainLoss)}</span></strong></p>
           <p><strong>Purchase Date: </strong>{pos.date}</p>
+          <button onClick={() => { this.deletePosition(pos.id) }}>Delete Position</button>
         </div>
       )
     })
 
     if (this.state.summary == null){
       return (
-        <h3>Loading...</h3>
+        <div>
+          <h1>Positions</h1>
+          <h3>Loading...</h3>
+        </div>
       )
     } else {
 

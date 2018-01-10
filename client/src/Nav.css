@@ -1,0 +1,40 @@
+nav {
+	background: #2e45b7;
+	color: white;
+	display: flex;
+	justify-content: flex-start;
+	align-items: left;
+	padding: 0 20px;
+	box-shadow: 0px 1px 10px black;
+}
+
+nav h1 {
+	margin: 0;
+}
+
+nav a {
+	color: white;
+	display: inline-block;
+	padding: 20px;
+	font-size: 1.2em;
+	text-decoration: none;
+}
+
+a:hover {
+	background: #dadadab8;
+  color: #2e45b7;
+}
+
+nav li {
+	list-style: none;
+}
+
+nav .push-left {
+	margin-right: auto;
+}
+
+.nav-logo {
+	max-width: 150px;
+	position: absolute;
+	top: 10px;
+}

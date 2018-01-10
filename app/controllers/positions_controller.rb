@@ -3,7 +3,7 @@ require "net/http"
 class PositionsController < ApplicationController
 
   before_action :authenticate_user
-  before_action :set_positions, only: [:index, :summary]
+  before_action :set_positions, only: [:index, :summary, :delete]
 
   def index
     render json: @positions
@@ -19,6 +19,13 @@ class PositionsController < ApplicationController
     @summary_data = {current_value: @current_value, original_value: @original_value, gain_loss: @current_value - @original_value}
     render json: @summary_data
   end
+
+  def delete
+    Position.destroy(params[:id])
+    set_positions
+    render json: @positions
+  end
+
 
   private
 
@@ -37,7 +44,7 @@ class PositionsController < ApplicationController
       value = pos.shares * cur_price
       @original_value += pos.purchase_price
       @current_value += value
-      @positions.push({name: coin.name, symbol: coin.symbol, shares: pos.shares, price: pos.purchase_price, date: pos.purchase_date, value: value})
+      @positions.push({id: pos.id, name: coin.name, symbol: coin.symbol, shares: pos.shares, price: pos.purchase_price, date: pos.purchase_date, value: value})
     end
   end
 
