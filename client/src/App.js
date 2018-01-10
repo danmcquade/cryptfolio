@@ -22,6 +22,7 @@ class App extends Component {
             <Route exact path='/login' render={() => (
               <Login />
             )} />
+            <Route path='/*' render={() => (<Redirect to='/' />)} />
           </Switch>
         </main>
       </div>
