@@ -22,4 +22,9 @@ class CoinsController < ApplicationController
     render json: data
   end
 
+  def list
+    @coins = Coin.all
+    render json: @coins
+  end
+
 end
