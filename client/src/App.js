@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import {
   Redirect,
   Route,
-  Switch,
-  withRouter
+  Switch
 } from 'react-router-dom'
 import './App.css'
 import AddPosition from './AddPosition'
@@ -43,4 +42,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App)
+export default App

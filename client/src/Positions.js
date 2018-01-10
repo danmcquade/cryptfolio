@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import $ from 'jquery'
 import './Positions.css'
 
@@ -136,7 +137,6 @@ class Positions extends Component {
         </div>
       )
     } else {
-
       let positionsGainLoss = this.state.summary.current_value - this.state.summary.original_value
       let pglColor = {}
       if (positionsGainLoss > 0) {
@@ -150,6 +150,7 @@ class Positions extends Component {
           <h1>Positions</h1>
           <h3>Positions for {this.state.whoami.name}</h3>
           <h3>Total: ${this.props.currencyFormat(parseFloat(this.state.summary.current_value))} (<span style={pglColor}>{positionsGainLoss > 0 ? '+' : null}${this.props.currencyFormat(positionsGainLoss)}</span>)</h3>
+          <p><Link to='/positions/new'>New Position</Link></p>
           <div className='positions'>
             {allPositions}
           </div>

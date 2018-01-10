@@ -7,17 +7,9 @@ class AddPosition extends Component {
     this.state = {
       position: {}
     }
-    this.stateIsSet = this.stateIsSet.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  goBack () {
-    this.props.history.push('/positions')
-  }
-
-  stateIsSet () {
-    console.log('State has been set!')
-  }
 
   handleSubmit (e) {
     let newPos = {}
@@ -28,6 +20,9 @@ class AddPosition extends Component {
     let date = e.target[3].value
     newPos = {currency: currency, shares: shares, purchase_price: price, purchase_date: date}
     console.log(newPos)
+    const goBack = function () {
+      this.props.history.push('/positions')
+    }.bind(this)
     this.setState({position: newPos}, () => {
       let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
       $.ajax({
@@ -37,6 +32,7 @@ class AddPosition extends Component {
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
         success: function (result) {
           console.log('New position posted')
+          goBack()
         },
         error: function (xhr) {
           console.log('Fetch user data from API failed')

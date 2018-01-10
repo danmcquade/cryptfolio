@@ -7,6 +7,7 @@ class Dashboard extends Component {
     super(props)
     this.state = {
       coins: [],
+      loaded: false,
       login: false
     }
   }
@@ -18,7 +19,7 @@ class Dashboard extends Component {
       context: this, // Allows us to use this.setState inside success
       success: function (result) {
         console.log(result)
-        this.setState({coins: JSON.parse(JSON.stringify(result))})
+        this.setState({coins: JSON.parse(JSON.stringify(result)), loaded: true})
       },
       error: function (xhr) {
         console.log('Fetching API data failed')
@@ -47,14 +48,25 @@ class Dashboard extends Component {
         </div>
       )
     })
-    return (
-      <div>
-        <h1>Dashboard</h1>
-        <div className='coins-container'>
-          {allCoins}
+    if (!this.state.loaded) {
+      return (
+        <div>
+          <h1>Dashboard</h1>
+          <div className='coins-container'>
+            <h3>Loading...</h3>
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div>
+          <h1>Dashboard</h1>
+          <div className='coins-container'>
+            {allCoins}
+          </div>
+        </div>
+      )
+    }
   }
 }
 
