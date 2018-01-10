@@ -67,7 +67,7 @@ class AddPosition extends Component {
           <p>Currency <select name='currency'>{currencies}</select></p>
           <p>Shares <input type='text' name='shares' /></p>
           <p>Purchase Price <input type='text' name='price' /></p>
-          <p>Date <input type='text' name='date' /></p>
+          <p>Date <input type='date' name='date' /></p>
           <p><input type='submit' value='Add' /></p>
         </form>
       </div>
