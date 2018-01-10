@@ -15,7 +15,7 @@ class Positions extends Component {
 
   componentDidMount () {
     $('.logout').hide()
-    console.log('Login Component Mounted!')
+    console.log('Position Component Mounted!')
     if (!localStorage.getItem('cryptfolio-jwt')) {
       console.log('Not logged in')
     } else {
