@@ -72,9 +72,9 @@ class AddPosition extends Component {
         <h1>New Position</h1>
         <form onSubmit={this.handleSubmit}>
           <p>Currency <select name='currency' value={this.state.defaultCoin}>{currencies}</select></p>
-          <p>Shares <input type='text' name='shares' /></p>
-          <p>Purchase Price <input type='text' name='price' /></p>
-          <p>Date <input id='datePicker' type='date' name='date' /></p>
+          <p>Shares <input className='edit-input' type='text' name='shares' /></p>
+          <p>Purchase Price <input className='edit-input' type='text' name='price' /></p>
+          <p>Date <input className='edit-input' id='datePicker' type='date' name='date' /></p>
           <p><input type='submit' value='Add' /></p>
         </form>
       </div>

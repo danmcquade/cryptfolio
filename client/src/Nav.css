@@ -72,6 +72,12 @@ nav .nav-avatar img {
 	text-align: center;
 }
 
+.login-input {
+	width: 250px;
+	font-size: 20px;
+	height: 30px;
+}
+
 .ReactModal__Overlay {
   background-color: rebeccapurple;
   opacity: 0;

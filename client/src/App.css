@@ -5,3 +5,22 @@ body {
 .App {
   text-align: center;
 }
+
+button, input[type=submit] {
+  width: 90px;
+  height: 30px;
+  color: #ffffff;
+  background: #2e45b7;
+  font-size: 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover, input[type=submit]:hover {
+  background: #4e61bb;
+}
+
+select {
+  font-size: 20px;
+}

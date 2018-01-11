@@ -15,17 +15,3 @@
   text-decoration: none;
   font-weight: 900;
 }
-
-.user-avatar {
-  max-width: 50px;
-  border-radius: 50px;
-}
-
-button {
-  width: 75px;
-  height: 25px;
-  color: #ffffff;
-  background: #2e45b7;
-  font-size: 15px;
-  margin: 10px;
-}

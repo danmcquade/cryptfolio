@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
 import Header from './Header'
+import './EditPosition.css'
 
 class EditPosition extends Component {
   constructor (props) {
@@ -138,9 +139,9 @@ class EditPosition extends Component {
         <h1>Edit Position</h1>
         <form onSubmit={this.handleSubmit}>
           <p>Currency <select name='currency' onChange={(e) => this.updateCurrency(e)}>{currencies}</select></p>
-          <p>Shares <input type='text' name='shares' onChange={(e) => this.updateShares(e)} value={this.state.position.shares} /></p>
-          <p>Purchase Price <input type='number' name='price' onChange={(e) => this.updatePrice(e)} value={this.state.position.price} /></p>
-          <p>Date <input type='date' name='date' onChange={(e) => this.updateDate(e)} value={this.state.position.date} /></p>
+          <p>Shares <input className='edit-input' type='text' name='shares' onChange={(e) => this.updateShares(e)} value={this.state.position.shares} /></p>
+          <p>Purchase Price <input className='edit-input' type='number' name='price' onChange={(e) => this.updatePrice(e)} value={this.state.position.price} /></p>
+          <p>Date <input type='date' className='edit-input' name='date' onChange={(e) => this.updateDate(e)} value={this.state.position.date} /></p>
           <p><input type='submit' value='Update' /></p>
         </form>
       </div>
