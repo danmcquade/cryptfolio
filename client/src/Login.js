@@ -29,6 +29,7 @@ class Login extends Component {
         $('.notification').empty()
         $('.notification').append('<strong>Login successful</strong>')
         this.setState({loggedIn: true})
+        this.props.setLoginState(true)
       }.bind(this),
       error: function (xhr) {
         $('.notification').empty()

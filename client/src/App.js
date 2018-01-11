@@ -18,23 +18,39 @@ class App extends Component {
     this.state = {
       loggedIn: false
     }
+    this.setLoginState = this.setLoginState.bind(this)
   }
 
   currencyFormat (num) {
     return num.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
   }
 
+  componentDidMount () {
+    if (!localStorage.getItem('cryptfolio-jwt')) {
+      console.log('Not logged in')
+    } else {
+      console.log('We have a token!')
+      this.setState({loggedIn: true})
+    }
+  }
+
+  setLoginState (state) {
+    this.setState({
+      loggedIn: state
+    })
+  }
+
   render () {
     return (
       <div className='App'>
-        <Nav />
+        <Nav loggedIn={this.state.loggedIn} setLoginState={this.setLoginState} />
         <main>
           <Switch>
             <Route exact path='/' render={() => (
               <Dashboard currencyFormat={this.currencyFormat} />
             )} />
             <Route exact path='/login' render={() => (
-              <Login />
+              <Login setLoginState={this.setLoginState} />
             )} />
             <Route exact path='/positions' render={(props) => (
               <Positions currencyFormat={this.currencyFormat} {...props} />
