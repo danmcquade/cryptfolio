@@ -14,8 +14,6 @@ import Login from './Login'
 import Nav from './Nav'
 import Positions from './Positions'
 
-import ModalTest from './ModalTest'
-
 class App extends Component {
   constructor () {
     super()
@@ -75,9 +73,6 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={() => (
               <Dashboard currencyFormat={this.currencyFormat} />
-            )} />
-            <Route exact path='/modal' render={(props) => (
-              <ModalTest loggedIn={this.state.loggedIn} whoAmIf={this.whoAmIf} setLoginState={this.setLoginState} {...props} />
             )} />
             <Route exact path='/login' render={(props) => (
               <Login loggedIn={this.state.loggedIn} whoAmIf={this.whoAmIf} setLoginState={this.setLoginState} {...props} />
