@@ -14,28 +14,6 @@ class Positions extends Component {
     }
   }
 
-  deletePosition (id) {
-    var check = window.confirm('Are you sure you want to delete this position?')
-    if (check === true) {
-      console.log('Deleteing position id: ' + id)
-      let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
-      $.ajax({
-        url: 'http://localhost:3001/api/positions/delete/' + id,
-        type: 'GET',
-        beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
-        context: this,
-        success: function (result) {
-          console.log(result)
-          this.setState({positions: JSON.parse(JSON.stringify(result))})
-          this.getPositionsSummary()
-        },
-        error: function (xhr) {
-          console.log('Delete position API call failed')
-        }
-      })
-    }
-  }
-
   componentDidMount () {
     $('.logout').hide()
     console.log('Position Component Mounted!')
@@ -90,6 +68,32 @@ class Positions extends Component {
     })
   }
 
+  editPosition (id) {
+    this.props.history.push('/positions/edit/' + id)
+  }
+
+  deletePosition (id) {
+    var check = window.confirm('Are you sure you want to delete this position?')
+    if (check === true) {
+      console.log('Deleteing position id: ' + id)
+      let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
+      $.ajax({
+        url: 'http://localhost:3001/api/positions/delete/' + id,
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
+        context: this,
+        success: function (result) {
+          console.log(result)
+          this.setState({positions: JSON.parse(JSON.stringify(result))})
+          this.getPositionsSummary()
+        },
+        error: function (xhr) {
+          console.log('Delete position API call failed')
+        }
+      })
+    }
+  }
+
   whoAmI () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
@@ -124,7 +128,9 @@ class Positions extends Component {
           <p><strong>Current value: </strong>${this.props.currencyFormat(parseFloat(pos.value))}</p>
           <p><strong>Gain/Loss: <span style={gainColor}>${this.props.currencyFormat(gainLoss)}</span></strong></p>
           <p><strong>Purchase Date: </strong>{pos.date}</p>
-          <button onClick={() => { this.deletePosition(pos.id) }}>Delete Position</button>
+          <button onClick={() => { this.deletePosition(pos.id) }}>Delete</button>
+          <button onClick={() => { this.editPosition(pos.id) }}>Edit</button>
+
         </div>
       )
     })

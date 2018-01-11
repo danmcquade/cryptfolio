@@ -134,13 +134,12 @@ class EditPosition extends Component {
     return (
       <div>
         <h1>Edit Position</h1>
-        <p><button onClick={this.click}>Click</button></p>
         <form onSubmit={this.handleSubmit}>
           <p>Currency <select name='currency' onChange={(e) => this.updateCurrency(e)}>{currencies}</select></p>
           <p>Shares <input type='text' name='shares' onChange={(e) => this.updateShares(e)} value={this.state.position.shares} /></p>
           <p>Purchase Price <input type='number' name='price' onChange={(e) => this.updatePrice(e)} value={this.state.position.price} /></p>
           <p>Date <input type='date' name='date' onChange={(e) => this.updateDate(e)} value={this.state.position.date} /></p>
-          <p><input type='submit' value='Add' /></p>
+          <p><input type='submit' value='Update' /></p>
         </form>
       </div>
     )

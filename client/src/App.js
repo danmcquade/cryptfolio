@@ -29,8 +29,8 @@ class App extends Component {
             <Route exact path='/login' render={() => (
               <Login />
             )} />
-            <Route exact path='/positions' render={() => (
-              <Positions currencyFormat={this.currencyFormat} />
+            <Route exact path='/positions' render={(props) => (
+              <Positions currencyFormat={this.currencyFormat} {...props} />
             )} />
             <Route exact path='/positions/edit/:id' render={(props) => (
               <EditPosition currencyFormat={this.currencyFormat} {...props} />
