@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
+import Header from './Header'
 
 class AddPosition extends Component {
   constructor (props) {
@@ -62,6 +63,7 @@ class AddPosition extends Component {
 
     return (
       <div>
+        <Header />
         <h1>New Position</h1>
         <form onSubmit={this.handleSubmit}>
           <p>Currency <select name='currency'>{currencies}</select></p>

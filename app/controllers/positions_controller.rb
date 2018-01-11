@@ -30,7 +30,9 @@ class PositionsController < ApplicationController
 
   def whoami
     @user = current_user
-    @user_data = {email: @user.email, name: @user.name, avatar: @user.gravatar_url}
+    avatar = @user.gravatar_url(default: 'https://i.imgur.com/m1W6IiV.png')
+
+    @user_data = {email: @user.email, name: @user.name, avatar: avatar}
     render json: @user_data
   end
 

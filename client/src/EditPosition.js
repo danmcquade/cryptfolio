@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
+import Header from './Header'
 
 class EditPosition extends Component {
   constructor (props) {
@@ -133,6 +134,7 @@ class EditPosition extends Component {
 
     return (
       <div>
+        <Header />
         <h1>Edit Position</h1>
         <form onSubmit={this.handleSubmit}>
           <p>Currency <select name='currency' onChange={(e) => this.updateCurrency(e)}>{currencies}</select></p>
