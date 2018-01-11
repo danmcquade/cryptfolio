@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
+import Header from './Header'
 
 class CoinDetail extends Component {
   constructor (props) {
@@ -51,6 +52,7 @@ class CoinDetail extends Component {
       }
       return (
         <div>
+          <Header />
           <h1>Currency Detail</h1>
           <div className='coin-detail-container'>
             <p><strong>Currency Name:</strong> {this.state.coin.name}</p>
