@@ -10,7 +10,6 @@ class Nav extends Component {
     console.log('Logged out.')
   }
   render () {
-    console.log('Props: ' + this.props.loggedIn)
     let loginButton
     if (this.props.loggedIn) {
       loginButton = <Link to='/' onClick={() => { this.logout() }} className='nav-link push-right'>Logout</Link>

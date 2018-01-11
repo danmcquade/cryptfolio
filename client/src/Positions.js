@@ -9,15 +9,14 @@ class Positions extends Component {
     this.state = {
       positions: [],
       summary: null,
-      whoami: null,
-      loggedIn: false
+      whoami: null
     }
   }
 
   componentDidMount () {
     $('.logout').hide()
     console.log('Position Component Mounted!')
-    if (!localStorage.getItem('cryptfolio-jwt')) {
+    if (!this.props.loggedIn) {
       console.log('Not logged in')
     } else {
       console.log('We have a token!')
@@ -139,14 +138,14 @@ class Positions extends Component {
       )
     })
 
-    if (this.state.summary == null){
+    if (!this.state.summary && this.props.loggedIn) {
       return (
         <div>
           <h1>Positions</h1>
           <h3>Loading...</h3>
         </div>
       )
-    } else {
+    } else if (this.state.summary && this.props.loggedIn) {
       let positionsGainLoss = this.state.summary.current_value - this.state.summary.original_value
       let pglColor = {}
       if (positionsGainLoss > 0) {
@@ -164,6 +163,13 @@ class Positions extends Component {
           <div className='positions'>
             {allPositions}
           </div>
+        </div>
+      )
+    } else if (!this.props.loggedIn) {
+      return (
+        <div>
+          <h1>Positions</h1>
+          <h3>Must be logged in to view positions</h3>
         </div>
       )
     }

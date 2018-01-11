@@ -26,10 +26,7 @@ class App extends Component {
   }
 
   componentDidMount () {
-    if (!localStorage.getItem('cryptfolio-jwt')) {
-      console.log('Not logged in')
-    } else {
-      console.log('We have a token!')
+    if (localStorage.getItem('cryptfolio-jwt')) {
       this.setState({loggedIn: true})
     }
   }
@@ -37,7 +34,7 @@ class App extends Component {
   setLoginState (state) {
     this.setState({
       loggedIn: state
-    })
+    }, () => { console.log('Login state set to: ' + this.state.loggedIn) })
   }
 
   render () {
@@ -49,17 +46,17 @@ class App extends Component {
             <Route exact path='/' render={() => (
               <Dashboard currencyFormat={this.currencyFormat} />
             )} />
-            <Route exact path='/login' render={() => (
-              <Login setLoginState={this.setLoginState} />
+          <Route exact path='/login' render={(props) => (
+              <Login loggedIn={this.state.loggedIn} setLoginState={this.setLoginState} {...props} />
             )} />
             <Route exact path='/positions' render={(props) => (
-              <Positions currencyFormat={this.currencyFormat} {...props} />
+              <Positions loggedIn={this.state.loggedIn} currencyFormat={this.currencyFormat} {...props} />
             )} />
             <Route exact path='/positions/edit/:id' render={(props) => (
-              <EditPosition currencyFormat={this.currencyFormat} {...props} />
+              <EditPosition loggedIn={this.state.loggedIn} currencyFormat={this.currencyFormat} {...props} />
             )} />
             <Route exact path='/positions/new' render={(props) => (
-              <AddPosition currencyFormat={this.currencyFormat} {...props} />
+              <AddPosition loggedIn={this.state.loggedIn} currencyFormat={this.currencyFormat} {...props} />
             )} />
             <Route path='/*' render={() => (<Redirect to='/' />)} />
           </Switch>

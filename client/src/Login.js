@@ -15,6 +15,10 @@ class Login extends Component {
     const email = $('#email').val()
     const password = $('#password').val()
     const request = {'auth': {'email': email, 'password': password}}
+    const toPositions = function () {
+      this.props.history.push('/positions')
+    }.bind(this)
+
     console.log(request)
     $.ajax({
       url: 'http://localhost:3001/api/user_token',
@@ -30,6 +34,7 @@ class Login extends Component {
         $('.notification').append('<strong>Login successful</strong>')
         this.setState({loggedIn: true})
         this.props.setLoginState(true)
+        toPositions()
       }.bind(this),
       error: function (xhr) {
         $('.notification').empty()
