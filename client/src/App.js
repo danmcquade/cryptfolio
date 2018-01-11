@@ -13,6 +13,13 @@ import Nav from './Nav'
 import Positions from './Positions'
 
 class App extends Component {
+  constructor () {
+    super()
+    this.state = {
+      loggedIn: false
+    }
+  }
+
   currencyFormat (num) {
     return num.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
   }

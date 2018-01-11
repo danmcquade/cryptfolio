@@ -72,6 +72,10 @@ class Positions extends Component {
     this.props.history.push('/positions/edit/' + id)
   }
 
+  addPosition () {
+    this.props.history.push('/positions/new/')
+  }
+
   deletePosition (id) {
     var check = window.confirm('Are you sure you want to delete this position?')
     if (check === true) {
@@ -156,7 +160,7 @@ class Positions extends Component {
           <h1>Positions</h1>
           <h3>Positions for {this.state.whoami.name}</h3>
           <h3>Total: ${this.props.currencyFormat(parseFloat(this.state.summary.current_value))} (<span style={pglColor}>{positionsGainLoss > 0 ? '+' : null}${this.props.currencyFormat(positionsGainLoss)}</span>)</h3>
-          <p><Link to='/positions/new'>New Position</Link></p>
+          <p><button onClick={() => { this.addPosition() }}>Add</button></p>
           <div className='positions'>
             {allPositions}
           </div>

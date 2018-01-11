@@ -9,3 +9,12 @@
   width: 225px;
   margin: 15px;
 }
+
+button {
+  width: 75px;
+  height: 25px;
+  color: #ffffff;
+  background: #2e45b7;
+  font-size: 15px;
+  margin: 10px;
+}
