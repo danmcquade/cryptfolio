@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
 import $ from 'jquery'
-import './Login.css'
 
 class Login extends Component {
   constructor(props) {

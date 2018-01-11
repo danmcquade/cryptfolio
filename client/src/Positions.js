@@ -152,7 +152,7 @@ class Positions extends Component {
         <div>
           <Header />
           <h1>Positions</h1>
-          <h3>Positions for {this.state.whoami.name}</h3>
+          <h3>Positions for {this.props.whoami.name}</h3>
           <h3>Total: ${this.props.currencyFormat(parseFloat(this.state.summary.current_value))} (<span style={pglColor}>{positionsGainLoss > 0 ? '+' : null}${this.props.currencyFormat(positionsGainLoss)}</span>)</h3>
           <p><button onClick={() => { this.addPosition() }}>Add</button></p>
           <div className='positions'>
