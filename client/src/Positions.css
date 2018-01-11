@@ -10,6 +10,11 @@
   margin: 15px;
 }
 
+.position-detail a {
+  color: #2e45b7;
+  text-decoration: none;
+  font-weight: 900;
+}
 button {
   width: 75px;
   height: 25px;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import $ from 'jquery'
 import './Positions.css'
 
@@ -111,6 +112,7 @@ class Positions extends Component {
 
   render () {
     const allPositions = this.state.positions.map((pos, index) => {
+      const detailUrl = '/detail/' + pos.api_id
       let gainLoss = (pos.value - pos.price)
       let gainColor = {}
       if (gainLoss > 0) {
@@ -120,7 +122,7 @@ class Positions extends Component {
       }
       return (
         <div className='position-detail' key={index}>
-          <p><strong>{pos.name} ({pos.symbol})</strong></p>
+          <p><Link to={detailUrl}><strong>{pos.name} ({pos.symbol})</strong></Link></p>
           <p><strong>Shares: </strong>{pos.shares}</p>
           <p><strong>Purchase Price: </strong>${this.props.currencyFormat(parseFloat(pos.price))}</p>
           <p><strong>Current value: </strong>${this.props.currencyFormat(parseFloat(pos.value))}</p>

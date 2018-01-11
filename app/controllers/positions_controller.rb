@@ -25,7 +25,7 @@ class PositionsController < ApplicationController
   def update
     @position = Position.find(params["position_id"])
     @coin = Coin.find_by(symbol: params["currency"])
-    @position.update(shares: params["shares"], purchase_price: params["purchase_price"], purchase_date: params["purchase_date"], coin_id: @coin.id)
+    @position.update(shares: params["shares"], purchase_price: params["purchase_price"], purchase_date: params["purchase_date"], coin_id: @coin.id, api_id: @coin.api_id)
   end
 
   def whoami
@@ -63,7 +63,7 @@ class PositionsController < ApplicationController
       value = pos.shares * cur_price
       @original_value += pos.purchase_price
       @current_value += value
-      @positions.push({id: pos.id, name: coin.name, symbol: coin.symbol, shares: pos.shares, price: pos.purchase_price, date: pos.purchase_date, value: value})
+      @positions.push({id: pos.id, api_id: coin.api_id, name: coin.name, symbol: coin.symbol, shares: pos.shares, price: pos.purchase_price, date: pos.purchase_date, value: value})
     end
   end
 
