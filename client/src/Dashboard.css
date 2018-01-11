@@ -10,10 +10,18 @@
 .crypto-icon {
   max-width: 55px;
   position: relative;
-  top: 100px;
-  left: -75px;
+  top: 125px;
+  left: -70px;
 }
 
 .coin-detail {
-  padding-left: 75px;
+  padding-left: 70px;
+  margin: 10px;
+  width: 230px;
+}
+
+.coin-detail a {
+  color: #2e45b7;
+  text-decoration: none;
+  font-weight: 900;
 }

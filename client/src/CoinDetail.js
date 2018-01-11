@@ -26,7 +26,6 @@ class CoinDetail extends Component {
   }
 
   render () {
-
     if (!this.state.loaded) {
       return (
         <h3>Loading...</h3>
@@ -53,7 +52,7 @@ class CoinDetail extends Component {
       return (
         <div>
           <h1>Currency Detail</h1>
-          <div className='coin-detail'>
+          <div className='coin-detail-container'>
             <p><strong>Currency Name:</strong> {this.state.coin.name}</p>
             <p><strong>Ticker Symbol:</strong> {this.state.coin.symbol}</p>
             <p><strong>Price (USD):</strong> ${this.props.currencyFormat(parseFloat(this.state.coin.price_usd))}</p>

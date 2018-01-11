@@ -30,10 +30,6 @@ class Dashboard extends Component {
 
   render () {
     const allCoins = this.state.coins.map((coin, index) => {
-      let divStyle = {
-        margin: '15px',
-        width: '185px'
-      }
       let changeColor = {}
       if (coin.percent_change_24h > 0) {
         changeColor = {color: 'green'}
@@ -44,8 +40,8 @@ class Dashboard extends Component {
       const detailUrl = '/detail/' + coin.id
       const altTxt = `${coin.name} icon image`
       return (
-        <div className='coin-detail' key={index} style={divStyle}>
-          <img className='crypto-icon' alt={altTxt} src={iconImage} />
+        <div className='coin-detail' key={index}>
+          <Link to={detailUrl}><img className='crypto-icon' alt={altTxt} src={iconImage} /></Link>
           <p><strong>Name:</strong> <Link to={detailUrl}>{coin.name}</Link></p>
           <p><strong>Symbol:</strong> {coin.symbol}</p>
           <p><strong>Price (USD):</strong> ${this.props.currencyFormat(parseFloat(coin.price_usd))}</p>
