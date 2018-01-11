@@ -135,14 +135,7 @@ class Positions extends Component {
       )
     })
 
-    if (!this.state.summary && this.props.loggedIn) {
-      return (
-        <div>
-          <h1>Positions</h1>
-          <h3>Loading...</h3>
-        </div>
-      )
-    } else if (this.state.summary && this.props.loggedIn) {
+    if (this.state.summary && this.props.loggedIn && this.state.whoami) {
       let positionsGainLoss = this.state.summary.current_value - this.state.summary.original_value
       let pglColor = {}
       if (positionsGainLoss > 0) {
@@ -154,7 +147,7 @@ class Positions extends Component {
       return (
         <div>
           <h1>Positions</h1>
-          <h3>Positions for {this.state.whoami.name}</h3>
+          <h3>Positions for {this.state.whoami.name} <img className='user-avatar' src={this.state.whoami.avatar} /></h3>
           <h3>Total: ${this.props.currencyFormat(parseFloat(this.state.summary.current_value))} (<span style={pglColor}>{positionsGainLoss > 0 ? '+' : null}${this.props.currencyFormat(positionsGainLoss)}</span>)</h3>
           <p><button onClick={() => { this.addPosition() }}>Add</button></p>
           <div className='positions'>
@@ -167,6 +160,13 @@ class Positions extends Component {
         <div>
           <h1>Positions</h1>
           <h3>Must be logged in to view positions</h3>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <h1>Positions</h1>
+          <h3>Loading...</h3>
         </div>
       )
     }

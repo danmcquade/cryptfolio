@@ -30,7 +30,7 @@ class PositionsController < ApplicationController
 
   def whoami
     @user = current_user
-    @user_data = {email: @user.email, name: @user.name}
+    @user_data = {email: @user.email, name: @user.name, avatar: @user.gravatar_url}
     render json: @user_data
   end
 
