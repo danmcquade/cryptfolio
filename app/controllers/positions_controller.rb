@@ -9,10 +9,23 @@ class PositionsController < ApplicationController
     render json: @positions
   end
 
+  def show
+    @position = Position.find(params["id"])
+    coin = Coin.find(@position.coin_id)
+    @position_data = {id: @position.id, name: coin.name, symbol: coin.symbol, shares: @position.shares, price: @position.purchase_price.round(2), date: @position.purchase_date}
+    render json: @position_data
+  end
+
   def create
     user = current_user
     coin = Coin.find_by(symbol: params["currency"])
     user.positions.create(shares: params["shares"], purchase_price: params["purchase_price"], purchase_date: params["purchase_date"], coin_id: coin.id)
+  end
+
+  def update
+    @position = Position.find(params["position_id"])
+    @coin = Coin.find_by(symbol: params["currency"])
+    @position.update(shares: params["shares"], purchase_price: params["purchase_price"], purchase_date: params["purchase_date"], coin_id: @coin.id)
   end
 
   def whoami

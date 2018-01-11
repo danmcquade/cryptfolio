@@ -7,6 +7,7 @@ import {
 import './App.css'
 import AddPosition from './AddPosition'
 import Dashboard from './Dashboard'
+import EditPosition from './EditPosition'
 import Login from './Login'
 import Nav from './Nav'
 import Positions from './Positions'
@@ -30,6 +31,9 @@ class App extends Component {
             )} />
             <Route exact path='/positions' render={() => (
               <Positions currencyFormat={this.currencyFormat} />
+            )} />
+            <Route exact path='/positions/edit/:id' render={(props) => (
+              <EditPosition currencyFormat={this.currencyFormat} {...props} />
             )} />
             <Route exact path='/positions/new' render={(props) => (
               <AddPosition currencyFormat={this.currencyFormat} {...props} />
