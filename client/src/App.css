@@ -5,24 +5,3 @@ body {
 .App {
   text-align: center;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-.header-logo {
-  width: 60%;
-  max-width: 700px;
-  margin: 20px;
-}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import $ from 'jquery'
+import Header from './Header'
 import './Positions.css'
 
 class Positions extends Component {
@@ -141,6 +142,7 @@ class Positions extends Component {
 
       return (
         <div>
+          <Header />
           <h1>Positions</h1>
           <h3>Positions for {this.state.whoami.name}</h3>
           <h3>Total: ${this.props.currencyFormat(parseFloat(this.state.summary.current_value))} (<span style={pglColor}>{positionsGainLoss > 0 ? '+' : null}${this.props.currencyFormat(positionsGainLoss)}</span>)</h3>
@@ -153,6 +155,7 @@ class Positions extends Component {
     } else if (!this.props.loggedIn) {
       return (
         <div>
+          <Header />
           <h1>Positions</h1>
           <h3>Must be logged in to view positions</h3>
         </div>
@@ -160,6 +163,7 @@ class Positions extends Component {
     } else {
       return (
         <div>
+          <Header />
           <h1>Positions</h1>
           <h3>Loading...</h3>
         </div>

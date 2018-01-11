@@ -41,7 +41,7 @@ class Dashboard extends Component {
       const altTxt = `${coin.name} icon image`
       return (
         <div className='coin-detail' key={index}>
-          <Link to={detailUrl}><img className='crypto-icon' alt={altTxt} src={iconImage} /></Link>
+          <div className='icon-container'><Link to={detailUrl}><img className='crypto-icon' alt={altTxt} src={iconImage} /></Link></div>
           <p><strong>Name:</strong> <Link to={detailUrl}>{coin.name}</Link></p>
           <p><strong>Symbol:</strong> {coin.symbol}</p>
           <p><strong>Price (USD):</strong> ${this.props.currencyFormat(parseFloat(coin.price_usd))}</p>
@@ -52,6 +52,7 @@ class Dashboard extends Component {
     if (!this.state.loaded) {
       return (
         <div>
+          <div className='header-container'><img className='dashboard-logo' alt='Cryptfolio Logo' src='/header-alt-logo.png' /></div>
           <h1>Dashboard</h1>
           <div className='coins-container'>
             <h3>Loading...</h3>
@@ -61,6 +62,7 @@ class Dashboard extends Component {
     } else {
       return (
         <div>
+          <div className='header-container'><img className='dashboard-logo' alt='Cryptfolio Logo' src='/header-alt-logo.png' /></div>
           <h1>Dashboard</h1>
           <div className='coins-container'>
             {allCoins}

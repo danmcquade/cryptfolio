@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import $ from 'jquery'
 import './Nav.css'
 
 class Nav extends Component {
-
   logout () {
     console.log('Clearing local storage...')
     localStorage.removeItem('cryptfolio-jwt')
