@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import './App.css'
 import AddPosition from './AddPosition'
+import CoinDetail from './CoinDetail'
 import Dashboard from './Dashboard'
 import EditPosition from './EditPosition'
 import Login from './Login'
@@ -49,6 +50,9 @@ class App extends Component {
             )} />
             <Route exact path='/login' render={(props) => (
               <Login loggedIn={this.state.loggedIn} setLoginState={this.setLoginState} {...props} />
+            )} />
+            <Route exact path='/detail/:id' render={(props) => (
+              <CoinDetail currencyFormat={this.currencyFormat} {...props} />
             )} />
             <Route exact path='/positions' render={(props) => (
               <Positions loggedIn={this.state.loggedIn} currencyFormat={this.currencyFormat} {...props} />

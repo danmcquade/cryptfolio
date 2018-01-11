@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import $ from 'jquery'
 import './Dashboard.css'
 
@@ -40,10 +41,11 @@ class Dashboard extends Component {
         changeColor = {color: 'red'}
       }
       const iconImage = '/icons/' + coin.symbol.toLowerCase() + '.png'
+      const detailUrl = '/detail/' + coin.id
       return (
         <div className='coin-detail' key={index} style={divStyle}>
           <img className='crypto-icon' src={iconImage} />
-          <p><strong>Name:</strong> {coin.name}</p>
+          <p><strong>Name:</strong> <Link to={detailUrl}>{coin.name}</Link></p>
           <p><strong>Symbol:</strong> {coin.symbol}</p>
           <p><strong>Price (USD):</strong> ${this.props.currencyFormat(parseFloat(coin.price_usd))}</p>
           <p><strong>Change (24H): <span style={changeColor}>{parseFloat(coin.percent_change_24h) > 0 ? '+' : null}{parseFloat(coin.percent_change_24h).toFixed(2)}%</span></strong></p>
