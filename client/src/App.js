@@ -41,12 +41,13 @@ class App extends Component {
     return (
       <div className='App'>
         <Nav loggedIn={this.state.loggedIn} setLoginState={this.setLoginState} />
+        <img className='header-logo' alt='Cryptfolio Logo' src='/header-logo.png' />
         <main>
           <Switch>
             <Route exact path='/' render={() => (
               <Dashboard currencyFormat={this.currencyFormat} />
             )} />
-          <Route exact path='/login' render={(props) => (
+            <Route exact path='/login' render={(props) => (
               <Login loggedIn={this.state.loggedIn} setLoginState={this.setLoginState} {...props} />
             )} />
             <Route exact path='/positions' render={(props) => (

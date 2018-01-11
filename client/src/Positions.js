@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import $ from 'jquery'
 import './Positions.css'
 
@@ -15,11 +14,7 @@ class Positions extends Component {
 
   componentDidMount () {
     $('.logout').hide()
-    console.log('Position Component Mounted!')
-    if (!this.props.loggedIn) {
-      console.log('Not logged in')
-    } else {
-      console.log('We have a token!')
+    if (localStorage.getItem('cryptfolio-jwt')) {
       this.setState({loggedIn: true})
       this.getPositions()
       this.getPositionsSummary()
