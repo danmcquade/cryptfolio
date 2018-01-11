@@ -41,7 +41,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Nav loggedIn={this.state.loggedIn} setLoginState={this.setLoginState} />
-        <img className='header-logo' alt='Cryptfolio Logo' src='/header-logo.png' />
+        <img className='header-logo' alt='Cryptfolio Logo' src='/header-alt-logo.png' />
         <main>
           <Switch>
             <Route exact path='/' render={() => (

@@ -39,8 +39,10 @@ class Dashboard extends Component {
       } else {
         changeColor = {color: 'red'}
       }
+      const iconImage = '/icons/' + coin.symbol.toLowerCase() + '.png'
       return (
         <div className='coin-detail' key={index} style={divStyle}>
+          <img className='crypto-icon' src={iconImage} />
           <p><strong>Name:</strong> {coin.name}</p>
           <p><strong>Symbol:</strong> {coin.symbol}</p>
           <p><strong>Price (USD):</strong> ${this.props.currencyFormat(parseFloat(coin.price_usd))}</p>

@@ -6,3 +6,14 @@
     justify-content: center;
     text-align: left;
 }
+
+.crypto-icon {
+  max-width: 55px;
+  position: relative;
+  top: 100px;
+  left: -75px;
+}
+
+.coin-detail {
+  padding-left: 75px;
+}
