@@ -34,6 +34,7 @@ class Login extends Component {
         $('.notification').append('<strong>Login successful</strong>')
         this.setState({loggedIn: true})
         this.props.setLoginState(true)
+        this.props.whoAmI()
         toPositions()
       }.bind(this),
       error: function (xhr) {

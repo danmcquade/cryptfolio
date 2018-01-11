@@ -43,8 +43,14 @@ nav .push-right {
 	margin-left: auto;
 }
 
- {
-	max-width: 150px;
-	position: absolute;
-	top: 10px;
+nav .nav-avatar {
+	position: relative;
+	float: right;
+	margin-left: 3px;
+}
+
+nav .nav-avatar img {
+	max-width: 50px;
+	border-radius: 50px;
+	box-shadow: 0px 0px 3px white;
 }

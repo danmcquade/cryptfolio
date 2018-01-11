@@ -23,10 +23,6 @@ class Positions extends Component {
     }
   }
 
-  click () {
-    console.log(JSON.parse(this.state.whoami))
-  }
-
   getPositions () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     console.log(token)
@@ -107,7 +103,6 @@ class Positions extends Component {
         console.log('Fetch user data from API failed')
       }
     })
-
   }
 
   render () {
@@ -147,7 +142,7 @@ class Positions extends Component {
       return (
         <div>
           <h1>Positions</h1>
-          <h3>Positions for {this.state.whoami.name} <img className='user-avatar' src={this.state.whoami.avatar} /></h3>
+          <h3>Positions for {this.state.whoami.name}</h3>
           <h3>Total: ${this.props.currencyFormat(parseFloat(this.state.summary.current_value))} (<span style={pglColor}>{positionsGainLoss > 0 ? '+' : null}${this.props.currencyFormat(positionsGainLoss)}</span>)</h3>
           <p><button onClick={() => { this.addPosition() }}>Add</button></p>
           <div className='positions'>
