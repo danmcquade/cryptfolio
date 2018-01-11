@@ -5,6 +5,12 @@
     margin: 0 auto;
     justify-content: center;
     text-align: left;
+    position: relative;
+    top: -80px;
+}
+
+.coins-container.loading {
+  top: 0px;
 }
 
 .crypto-icon {
