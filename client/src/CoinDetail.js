@@ -54,8 +54,8 @@ class CoinDetail extends Component {
         <div>
           <h1>Currency Detail</h1>
           <div className='coin-detail'>
-            <p><strong>Name:</strong> {this.state.coin.name}</p>
-            <p><strong>Symbol:</strong> {this.state.coin.symbol}</p>
+            <p><strong>Currency Name:</strong> {this.state.coin.name}</p>
+            <p><strong>Ticker Symbol:</strong> {this.state.coin.symbol}</p>
             <p><strong>Price (USD):</strong> ${this.props.currencyFormat(parseFloat(this.state.coin.price_usd))}</p>
             <p><strong>Change (1 hour): <span style={changeColor1H}>{parseFloat(this.state.coin.percent_change_1h) > 0 ? '+' : null}{parseFloat(this.state.coin.percent_change_1h).toFixed(2)}%</span></strong></p>
             <p><strong>Change (24 hours): <span style={changeColor24H}>{parseFloat(this.state.coin.percent_change_24h) > 0 ? '+' : null}{parseFloat(this.state.coin.percent_change_24h).toFixed(2)}%</span></strong></p>

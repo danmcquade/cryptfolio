@@ -42,9 +42,10 @@ class Dashboard extends Component {
       }
       const iconImage = '/icons/' + coin.symbol.toLowerCase() + '.png'
       const detailUrl = '/detail/' + coin.id
+      const altTxt = `${coin.name} icon image`
       return (
         <div className='coin-detail' key={index} style={divStyle}>
-          <img className='crypto-icon' src={iconImage} />
+          <img className='crypto-icon' alt={altTxt} src={iconImage} />
           <p><strong>Name:</strong> <Link to={detailUrl}>{coin.name}</Link></p>
           <p><strong>Symbol:</strong> {coin.symbol}</p>
           <p><strong>Price (USD):</strong> ${this.props.currencyFormat(parseFloat(coin.price_usd))}</p>
