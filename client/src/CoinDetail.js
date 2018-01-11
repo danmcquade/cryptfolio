@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import $ from 'jquery'
 import Header from './Header'
 
@@ -62,6 +63,7 @@ class CoinDetail extends Component {
             <p><strong>Change (24 hours): <span style={changeColor24H}>{parseFloat(this.state.coin.percent_change_24h) > 0 ? '+' : null}{parseFloat(this.state.coin.percent_change_24h).toFixed(2)}%</span></strong></p>
             <p><strong>Change (1 week): <span style={changeColor7D}>{parseFloat(this.state.coin.percent_change_7d) > 0 ? '+' : null}{parseFloat(this.state.coin.percent_change_7d).toFixed(2)}%</span></strong></p>
           </div>
+          <Link to={`/positions/new/${this.state.coin.symbol}`}>Add New {this.state.coin.name} Position</Link>
         </div>
       )
     }

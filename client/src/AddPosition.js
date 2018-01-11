@@ -7,6 +7,7 @@ class AddPosition extends Component {
     super(props)
     this.state = {
       position: {},
+      defaultCoin: '',
       currencies: []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -52,6 +53,10 @@ class AddPosition extends Component {
         console.log('Fetching currency list from API failed')
       }
     })
+    if (this.props.match.params.currency) {
+      this.setState({defaultCoin: this.props.match.params.currency})
+    }
+    document.getElementById('datePicker').valueAsDate = new Date()
   }
 
   render () {
@@ -66,10 +71,10 @@ class AddPosition extends Component {
         <Header />
         <h1>New Position</h1>
         <form onSubmit={this.handleSubmit}>
-          <p>Currency <select name='currency'>{currencies}</select></p>
+          <p>Currency <select name='currency' value={this.state.defaultCoin}>{currencies}</select></p>
           <p>Shares <input type='text' name='shares' /></p>
           <p>Purchase Price <input type='text' name='price' /></p>
-          <p>Date <input type='date' name='date' /></p>
+          <p>Date <input id='datePicker' type='date' name='date' /></p>
           <p><input type='submit' value='Add' /></p>
         </form>
       </div>
