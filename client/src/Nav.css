@@ -9,7 +9,6 @@ nav {
 	box-shadow: 0px 1px 10px black;
 	position: relative;
 }
-
 nav .nav-logo {
 	max-width: 50px;
 	margin-top: 3px;
@@ -55,4 +54,35 @@ nav .nav-avatar img {
 	max-width: 50px;
 	border-radius: 50px;
 	box-shadow: 0px 0px 3px white;
+}
+
+.login-logo {
+	width: 150px;
+}
+
+.login-container {
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-form {
+	text-align: center;
+}
+
+.ReactModal__Overlay {
+  background-color: rebeccapurple;
+  opacity: 0;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 1;
+	transition: opacity 200ms ease-in-out;
 }

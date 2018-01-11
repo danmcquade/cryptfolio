@@ -14,6 +14,8 @@ import Login from './Login'
 import Nav from './Nav'
 import Positions from './Positions'
 
+import ModalTest from './ModalTest'
+
 class App extends Component {
   constructor () {
     super()
@@ -23,7 +25,7 @@ class App extends Component {
     }
     this.setLoginState = this.setLoginState.bind(this)
     this.clearWhoAmI = this.clearWhoAmI.bind(this)
-    this.whoAmI = this.whoAmI.bind(this)
+    this.whoAmIf = this.whoAmIf.bind(this)
   }
 
   currencyFormat (num) {
@@ -42,7 +44,7 @@ class App extends Component {
     })
   }
 
-  whoAmI () {
+  whoAmIf () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
       url: 'http://localhost:3001/api/whoami',
@@ -61,27 +63,30 @@ class App extends Component {
   componentDidMount () {
     if (localStorage.getItem('cryptfolio-jwt')) {
       this.setState({loggedIn: true})
-      this.whoAmI()
+      this.whoAmIf()
     }
   }
 
   render () {
     return (
       <div className='App'>
-        <Nav loggedIn={this.state.loggedIn} setLoginState={this.setLoginState} whoami={this.state.whoami} clearWhoAmI={this.clearWhoAmI} />
+        <Nav loggedIn={this.state.loggedIn} whoAmIf={this.whoAmIf} setLoginState={this.setLoginState} whoami={this.state.whoami} clearWhoAmI={this.clearWhoAmI} />
         <main>
           <Switch>
             <Route exact path='/' render={() => (
               <Dashboard currencyFormat={this.currencyFormat} />
             )} />
+            <Route exact path='/modal' render={(props) => (
+              <ModalTest loggedIn={this.state.loggedIn} whoAmIf={this.whoAmIf} setLoginState={this.setLoginState} {...props} />
+            )} />
             <Route exact path='/login' render={(props) => (
-              <Login loggedIn={this.state.loggedIn} whoAmI={this.whoAmI} setLoginState={this.setLoginState} {...props} />
+              <Login loggedIn={this.state.loggedIn} whoAmIf={this.whoAmIf} setLoginState={this.setLoginState} {...props} />
             )} />
             <Route exact path='/detail/:id' render={(props) => (
               <CoinDetail currencyFormat={this.currencyFormat} {...props} />
             )} />
             <Route exact path='/positions' render={(props) => (
-              <Positions loggedIn={this.state.loggedIn} currencyFormat={this.currencyFormat} whoami={this.state.whoami} {...props} />
+              <Positions loggedIn={this.state.loggedIn} currencyFormat={this.currencyFormat} whoAmIf={this.whoAmIf} whoami={this.state.whoami} {...props} />
             )} />
             <Route exact path='/positions/edit/:id' render={(props) => (
               <EditPosition loggedIn={this.state.loggedIn} currencyFormat={this.currencyFormat} {...props} />

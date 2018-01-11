@@ -10,18 +10,26 @@ class Positions extends Component {
     this.state = {
       positions: [],
       summary: null,
-      whoami: null
+      whoami: null,
+      fetched: false
     }
   }
 
-  componentDidMount () {
-    $('.logout').hide()
+  updatePositions () {
     if (localStorage.getItem('cryptfolio-jwt')) {
       this.setState({loggedIn: true})
       this.getPositions()
       this.getPositionsSummary()
       this.whoAmI()
     }
+  }
+
+  componentDidMount () {
+    this.updatePositions()
+  }
+
+  componentWillReceiveProps () {
+    this.updatePositions()
   }
 
   getPositions () {
@@ -131,7 +139,7 @@ class Positions extends Component {
       )
     })
 
-    if (this.state.summary && this.props.loggedIn && this.state.whoami) {
+    if (this.state.summary && this.props.loggedIn && this.props.whoami) {
       let positionsGainLoss = this.state.summary.current_value - this.state.summary.original_value
       let pglColor = {}
       if (positionsGainLoss > 0) {

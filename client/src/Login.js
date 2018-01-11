@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
 import $ from 'jquery'
+import './Login.css'
 
 class Login extends Component {
   constructor(props) {
@@ -19,14 +21,12 @@ class Login extends Component {
       this.props.history.push('/positions')
     }.bind(this)
 
-    console.log(request)
     $.ajax({
       url: 'http://localhost:3001/api/user_token',
       type: 'POST',
       data: request,
       dataType: 'json',
       success: function (result) {
-        console.log(result)
         localStorage.setItem('cryptfolio-jwt', result.jwt)
         $('.loginform').hide()
         $('.logout').show()
@@ -34,8 +34,9 @@ class Login extends Component {
         $('.notification').append('<strong>Login successful</strong>')
         this.setState({loggedIn: true})
         this.props.setLoginState(true)
-        this.props.whoAmI()
+        this.props.whoAmIf()
         toPositions()
+        this.props.closeModal()
       }.bind(this),
       error: function (xhr) {
         $('.notification').empty()
@@ -43,16 +44,6 @@ class Login extends Component {
         console.log('Login failed')
       }
     })
-  }
-
-  logout () {
-    console.log('Clearing local storage...')
-    localStorage.removeItem('cryptfolio-jwt')
-    $('.notification').empty()
-    $('.notification').append('<strong>Logged out</strong>')
-    console.log('Logged out.')
-    $('.loginform').show()
-    $('.logout').hide()
   }
 
   componentDidMount () {
@@ -70,10 +61,10 @@ class Login extends Component {
 
   render () {
     return (
-      <div>
+      <div className='login-container'>
+        <img className='login-logo' src='/circle-logo.png' alt='Cryptfolio Logo' />
         <p className='notification' />
-        <p><strong>Login Status: {this.state.loggedIn ? 'true' : 'false'}</strong></p>
-        <div className='loginform'>
+        <div className='login-form'>
           <form>
             <label htmlFor='email'>Email: </label>
             <br />
@@ -93,13 +84,11 @@ class Login extends Component {
           </form>
           <br />
           <button onClick={this.login}>Login</button>
-        </div>
-        <div className='logout'>
-          <button onClick={this.logout}>Logout</button>
+          <button onClick={this.props.closeModal}>Cancel</button>
         </div>
       </div>
     )
   }
 }
 
-export default Login
+export default withRouter(Login)
