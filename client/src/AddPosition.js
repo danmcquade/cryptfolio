@@ -101,7 +101,6 @@ class AddPosition extends Component {
       changeColor = {color: 'red'}
     }
     // const iconImage = '/icons/' + this.state.coin.id.toLowerCase() + '.png'
-    const detailUrl = '/detail/' + this.state.coin.id
     const altTxt = `${this.state.coin.name} icon image`
     let coinDetail = ''
     if (!this.state.coin.symbol) {
@@ -113,7 +112,7 @@ class AddPosition extends Component {
             <img className='add-icon' src={`https://s3.amazonaws.com/cryptfolio-cdn/icons/${this.state.coin.symbol.toLowerCase()}.png`} alt={altTxt} />
           </div>
           <div className='add-coin-detail-data'>
-            <p><strong>Name:</strong> <Link to={detailUrl}>{this.state.coin.name}</Link></p>
+            <p><strong>Name:</strong> {this.state.coin.name}</p>
             <p><strong>Symbol:</strong> {this.state.coin.symbol}</p>
             <p><strong>Price (USD):</strong> ${this.props.currencyFormat(parseFloat(this.state.coin.price_usd))}</p>
             <p><strong>Change (24H): <span style={changeColor}>{parseFloat(this.state.coin.percent_change_24h) > 0 ? '+' : null}{parseFloat(this.state.coin.percent_change_24h).toFixed(2)}%</span></strong></p>
