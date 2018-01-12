@@ -6,6 +6,11 @@ body {
   text-align: center;
 }
 
+h1 {
+  font-size: 1.5em;
+  text-shadow: 1px 1px 1px #b1b1b1;
+}
+
 button, input[type=submit] {
   width: 90px;
   height: 30px;

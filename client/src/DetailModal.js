@@ -29,7 +29,7 @@ class DetailModal extends Component {
   }
 
   render () {
-    const iconStyle = { width: '100px'}
+    const iconStyle = {width: '100px'}
     if (!this.state.loaded) {
       return (
         <h3>Loading...</h3>

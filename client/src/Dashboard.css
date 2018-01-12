@@ -1,12 +1,11 @@
 .coins-container {
     display: flex;
     flex-wrap: wrap;
-    max-width: 75%;
+    max-width: 80%;
     margin: 0 auto;
     justify-content: center;
     text-align: left;
     position: relative;
-    top: -80px;
 }
 
 .coins-container.loading {
@@ -19,13 +18,19 @@
 
 .icon-container {
   position: relative;
-  top: 125px;
-  left: -70px;
+  left: -15px;
 }
+
+.data-container {
+
+}
+
 .coin-detail {
-  padding-left: 70px;
+  display: flex;
   margin: 10px;
-  width: 230px;
+  width: 290px;
+  align-items: center;
+  justify-content: center;
 }
 
 .coin-detail a {
