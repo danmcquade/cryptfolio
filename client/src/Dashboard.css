@@ -47,7 +47,7 @@
 }
 
 .header-container {
-  background: url('/header-bg.jpg');
+  background: url('http://cdn.danmcq.com/cryptfolio/header-bg.jpg');
   background-position: center;
   background-size: cover;
   height: 350px;
