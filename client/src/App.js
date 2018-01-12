@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {
+  Redirect,
   Route,
   Switch
 } from 'react-router-dom'
@@ -88,6 +89,7 @@ class App extends Component {
             <Route exact path='/positions/new/:currency?' render={(props) => (
               <AddPosition loggedIn={this.state.loggedIn} currencyFormat={this.currencyFormat} {...props} />
             )} />
+            <Route path='/' render={() => (<Redirect to='/cryptfolio' />)} />
           </Switch>
         </main>
       </div>
