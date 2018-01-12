@@ -65,7 +65,7 @@ class Login extends Component {
   render () {
     return (
       <div className='login-container'>
-        <img className='login-logo' src='http://cdn.danmcq.com/cryptfolio/circle-logo.png' alt='Cryptfolio Logo' />
+        <img className='login-logo' src='https://s3.amazonaws.com/cryptfolio-cdn/circle-logo.png' alt='Cryptfolio Logo' />
         <p className='notification' />
         <div className='login-form'>
           <form>
