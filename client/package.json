@@ -1,6 +1,7 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "cryptfolio-client",
+  "homepage": "https://danmcquade.github.io/cryptfolio",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
