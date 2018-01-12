@@ -54,7 +54,7 @@ class Dashboard extends Component {
 
   componentDidMount () {
     $.ajax({
-      url: 'http://localhost:3001/api/coins',
+      url: 'https://cryptfolio-api.herokuapp.com/api/coins',
       type: 'GET',
       context: this, // Allows us to use this.setState inside success
       success: function (result) {

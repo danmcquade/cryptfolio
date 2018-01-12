@@ -12,7 +12,7 @@ class DetailModal extends Component {
 
   componentDidMount () {
     $.ajax({
-      url: 'http://localhost:3001/api/coins/' + this.props.coin_id,
+      url: 'https://cryptfolio-api.herokuapp.com/api/coins/' + this.props.coin_id,
       type: 'GET',
       context: this, // Allows us to use this.setState inside success
       success: function (result) {

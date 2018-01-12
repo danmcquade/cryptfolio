@@ -14,7 +14,7 @@ class CoinDetail extends Component {
   componentDidMount () {
     console.log('Fetching coin deatil for id: ' + this.props.match.params.id)
     $.ajax({
-      url: 'http://localhost:3001/api/coins/' + this.props.match.params.id,
+      url: 'https://cryptfolio-api.herokuapp.com/api/coins/' + this.props.match.params.id,
       type: 'GET',
       context: this, // Allows us to use this.setState inside success
       success: function (result) {

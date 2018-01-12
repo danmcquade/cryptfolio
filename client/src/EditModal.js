@@ -37,7 +37,7 @@ class EditModal extends Component {
     this.setState({updatedPosition: updatedPosition}, () => {
       let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
       $.ajax({
-        url: 'http://localhost:3001/api/positions/' + this.state.position.id,
+        url: 'https://cryptfolio-api.herokuapp.com/api/positions/' + this.state.position.id,
         type: 'PUT',
         data: this.state.updatedPosition,
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
@@ -94,7 +94,7 @@ class EditModal extends Component {
   componentDidMount () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
-      url: 'http://localhost:3001/api/coins/list',
+      url: 'https://cryptfolio-api.herokuapp.com/api/coins/list',
       type: 'GET',
       context: this,
       success: function (result) {
@@ -105,7 +105,7 @@ class EditModal extends Component {
       }
     }).then(
       $.ajax({
-        url: 'http://localhost:3001/api/positions/' + this.state.position_id,
+        url: 'https://cryptfolio-api.herokuapp.com/api/positions/' + this.state.position_id,
         type: 'GET',
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
         context: this,

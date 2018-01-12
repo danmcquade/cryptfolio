@@ -45,7 +45,7 @@ class App extends Component {
   whoAmIf () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
-      url: 'http://localhost:3001/api/whoami',
+      url: 'https://cryptfolio-api.herokuapp.com/api/whoami',
       type: 'GET',
       beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
       context: this,

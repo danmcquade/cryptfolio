@@ -27,7 +27,7 @@ class AddPosition extends Component {
     console.log('Fetching coin')
     console.log('Fetching coin deatil for id: ' + newCurrency)
     $.ajax({
-      url: 'http://localhost:3001/api/coin_symbol/' + newCurrency,
+      url: 'https://cryptfolio-api.herokuapp.com/api/coin_symbol/' + newCurrency,
       type: 'GET',
       context: this, // Allows us to use this.setState inside success
       success: function (result) {
@@ -54,7 +54,7 @@ class AddPosition extends Component {
     this.setState({position: newPosition}, () => {
       let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
       $.ajax({
-        url: 'http://localhost:3001/api/positions',
+        url: 'https://cryptfolio-api.herokuapp.com/api/positions',
         type: 'POST',
         data: this.state.position,
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
@@ -70,7 +70,7 @@ class AddPosition extends Component {
 
   componentDidMount () {
     $.ajax({
-      url: 'http://localhost:3001/api/coins/list',
+      url: 'https://cryptfolio-api.herokuapp.com/api/coins/list',
       type: 'GET',
       context: this, // Allows us to use this.setState inside success
       success: function (result) {

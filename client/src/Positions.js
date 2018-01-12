@@ -44,7 +44,7 @@ class Positions extends Component {
   getPositions () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
-      url: 'http://localhost:3001/api/positions',
+      url: 'https://cryptfolio-api.herokuapp.com/api/positions',
       type: 'GET',
       beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
       context: this,
@@ -60,7 +60,7 @@ class Positions extends Component {
   getPositionsSummary () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
-      url: 'http://localhost:3001/api/positions/summary',
+      url: 'https://cryptfolio-api.herokuapp.com/api/positions/summary',
       type: 'GET',
       beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
       context: this,
@@ -86,7 +86,7 @@ class Positions extends Component {
     if (check === true) {
       let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
       $.ajax({
-        url: 'http://localhost:3001/api/positions/delete/' + id,
+        url: 'https://cryptfolio-api.herokuapp.com/api/positions/delete/' + id,
         type: 'GET',
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
         context: this,
@@ -104,7 +104,7 @@ class Positions extends Component {
   whoAmI () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
-      url: 'http://localhost:3001/api/whoami',
+      url: 'https://cryptfolio-api.herokuapp.com/api/whoami',
       type: 'GET',
       beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
       context: this,

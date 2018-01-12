@@ -21,7 +21,7 @@ class Login extends Component {
     }.bind(this)
 
     $.ajax({
-      url: 'http://localhost:3001/api/user_token',
+      url: 'https://cryptfolio-api.herokuapp.com/api/user_token',
       type: 'POST',
       data: request,
       dataType: 'json',
