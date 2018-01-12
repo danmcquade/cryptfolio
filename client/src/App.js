@@ -89,7 +89,6 @@ class App extends Component {
             <Route exact path='/positions/new/:currency?' render={(props) => (
               <AddPosition loggedIn={this.state.loggedIn} currencyFormat={this.currencyFormat} {...props} />
             )} />
-            <Route path='/*' render={() => (<Redirect to='/' />)} />
           </Switch>
         </main>
       </div>
