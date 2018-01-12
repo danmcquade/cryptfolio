@@ -71,7 +71,7 @@ class App extends Component {
         <Nav loggedIn={this.state.loggedIn} whoAmIf={this.whoAmIf} setLoginState={this.setLoginState} whoami={this.state.whoami} clearWhoAmI={this.clearWhoAmI} />
         <main>
           <Switch>
-            <Route exact path='/' render={() => (
+            <Route exact path='/cryptfolio' render={() => (
               <Dashboard loggedIn={this.state.loggedIn} currencyFormat={this.currencyFormat} />
             )} />
             <Route exact path='/login' render={(props) => (
