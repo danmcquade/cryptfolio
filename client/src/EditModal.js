@@ -19,11 +19,6 @@ class EditModal extends Component {
       updatedPosition: {}
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.click = this.click.bind(this)
-  }
-
-  click () {
-    console.log(this.state.position)
   }
 
   handleSubmit (e) {
@@ -35,7 +30,6 @@ class EditModal extends Component {
     let price = this.state.position.price
     let date = this.state.position.date
     updatedPosition = {position_id: positionId, currency: currency, shares: shares, purchase_price: price, purchase_date: date}
-    console.log(updatedPosition)
     const goBack = function () {
       this.props.toggleModal(null)
       this.props.history.push('/positions')
@@ -59,7 +53,6 @@ class EditModal extends Component {
 
   updateCurrency (e) {
     let newCurrency = e.target.value
-    console.log(newCurrency)
     this.setState(prevState => ({
       position: {
         ...prevState.position,
@@ -117,7 +110,6 @@ class EditModal extends Component {
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
         context: this,
         success: function (result) {
-          console.log(result)
           this.setState({position: JSON.parse(JSON.stringify(result))})
         },
         error: function (xhr) {
