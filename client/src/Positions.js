@@ -3,6 +3,22 @@ import { Link } from 'react-router-dom'
 import $ from 'jquery'
 import Header from './Header'
 import './Positions.css'
+import EditModal from './EditModal'
+
+import Modal from 'react-modal'
+
+
+const modalStyle = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    boxShadow: '0px 0px 5px #00000073'
+  }
+}
 
 class Positions extends Component {
   constructor (props) {
@@ -11,7 +27,11 @@ class Positions extends Component {
       positions: [],
       summary: null,
       whoami: null,
-      fetched: false
+      fetched: false,
+      editPositionIsOpen: false,
+      currentItem: -1,
+      loading: false,
+      items: []
     }
   }
 
@@ -114,7 +134,51 @@ class Positions extends Component {
     })
   }
 
+/* --------------------------------------------------------------- */
+/* --------------------------------------------------------------- */
+/* --------------------------------------------------------------- */
+/* --------------------------------------------------------------- */
+
+toggleModal = event => {
+  if (event){
+    event.preventDefault()
+  }
+  if (this.state.editPositionIsOpen) {
+    this.handleModalCloseRequest();
+    return;
+  }
+  this.setState({
+    editPositionIsOpen: true,
+    loading: true
+  });
+}
+
+handleModalCloseRequest = () => {
+  this.setState({
+    editPositionIsOpen: false,
+    loading: false
+  });
+}
+
+handleOnAfterOpenModal = () => {
+  (new Promise((resolve, reject) => {
+    setTimeout(() => resolve(true), 500);
+  })).then(res => {
+    this.setState({
+      loading: false
+    });
+  });
+}
+
+openEditModal(e, id) {
+  this.setState({position_id: id}, this.toggleModal(e))
+}
+
+
+
   render () {
+    const { editPositionIsOpen } = this.state;
+
     const allPositions = this.state.positions.map((pos, index) => {
       const detailUrl = '/detail/' + pos.api_id
       let gainLoss = (pos.value - pos.price)
@@ -133,7 +197,7 @@ class Positions extends Component {
           <p><strong>Gain/Loss: <span style={gainColor}>${this.props.currencyFormat(gainLoss)}</span></strong></p>
           <p><strong>Purchase Date: </strong>{pos.date}</p>
           <button onClick={() => { this.deletePosition(pos.id) }}>Delete</button>
-          <button onClick={() => { this.editPosition(pos.id) }}>Edit</button>
+          <button onClick={(e) => { this.openEditModal(e, pos.id) }}>Edit</button>
 
         </div>
       )
@@ -158,6 +222,16 @@ class Positions extends Component {
           <div className='positions'>
             {allPositions}
           </div>
+          <Modal
+            id="test"
+            closeTimeoutMS={150}
+            contentLabel="modalA"
+            isOpen={editPositionIsOpen}
+            style={modalStyle}
+            onAfterOpen={this.handleOnAfterOpenModal}
+            onRequestClose={this.toggleModal}>
+            <EditModal id={this.state.position_id} toggleModal={this.toggleModal} />
+          </Modal>
         </div>
       )
     } else if (!this.props.loggedIn) {

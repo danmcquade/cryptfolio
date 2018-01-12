@@ -3,3 +3,18 @@
   height: 30px;
   font-family: Helvetica;
 }
+
+.edit-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-modal-form {
+  text-align: right;
+}
+
+.edit-modal-buttons {
+  text-align: center;
+}
