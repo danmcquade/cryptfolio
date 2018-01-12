@@ -111,7 +111,7 @@ class Dashboard extends Component {
     if (!this.state.loaded) {
       return (
         <div>
-          <div className='header-container'><img className='dashboard-logo' alt='Cryptfolio Logo' src='/header-alt-logo.png' /></div>
+          <div className='header-container'><img className='dashboard-logo' alt='Cryptfolio Logo' src='/white-header-logo.png' /></div>
         <h1>Dashboard</h1>
           <div className='coins-container loading'>
             <h3>Loading...</h3>
@@ -121,7 +121,7 @@ class Dashboard extends Component {
     } else {
       return (
         <div>
-          <div className='header-container'><img className='dashboard-logo' alt='Cryptfolio Logo' src='/header-alt-logo.png' /></div>
+          <div className='header-container'><img className='dashboard-logo' alt='Cryptfolio Logo' src='/white-header-logo.png' /></div>
           <h1>Dashboard</h1>
           <div className='coins-container'>
             {allCoins}
