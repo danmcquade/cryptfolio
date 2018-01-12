@@ -111,11 +111,15 @@ class AddPosition extends Component {
     } else {
       coinDetail =
         <div className='add-coin-detail'>
-          <img className='add-icon' src={`/icons/${this.state.coin.symbol}.png`} alt={altTxt} />
-          <p><strong>Name:</strong> <Link to={detailUrl}>{this.state.coin.name}</Link></p>
-          <p><strong>Symbol:</strong> {this.state.coin.symbol}</p>
-          <p><strong>Price (USD):</strong> ${this.props.currencyFormat(parseFloat(this.state.coin.price_usd))}</p>
-          <p><strong>Change (24H): <span style={changeColor}>{parseFloat(this.state.coin.percent_change_24h) > 0 ? '+' : null}{parseFloat(this.state.coin.percent_change_24h).toFixed(2)}%</span></strong></p>
+          <div className='add-coin-detail-image'>
+            <img className='add-icon' src={`/icons/${this.state.coin.symbol}.png`} alt={altTxt} />
+          </div>
+          <div className='add-coin-detail-data'>
+            <p><strong>Name:</strong> <Link to={detailUrl}>{this.state.coin.name}</Link></p>
+            <p><strong>Symbol:</strong> {this.state.coin.symbol}</p>
+            <p><strong>Price (USD):</strong> ${this.props.currencyFormat(parseFloat(this.state.coin.price_usd))}</p>
+            <p><strong>Change (24H): <span style={changeColor}>{parseFloat(this.state.coin.percent_change_24h) > 0 ? '+' : null}{parseFloat(this.state.coin.percent_change_24h).toFixed(2)}%</span></strong></p>
+          </div>
         </div>
     }
 

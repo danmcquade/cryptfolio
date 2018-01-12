@@ -27,7 +27,7 @@ Coin.create(name: 'Ripple', symbol: 'XRP', api_id: 'ripple')
 Coin.create(name: 'Monero', symbol: 'XMR', api_id: 'monero')
 Coin.create(name: 'NEM', symbol: 'XEM', api_id: 'nem')
 Coin.create(name: 'Dash', symbol: 'DASH', api_id: 'dash')
-Coin.create(name: 'IOTA', symbol: 'XEM', api_id: 'iota')
+Coin.create(name: 'IOTA', symbol: 'MIOTA', api_id: 'iota')
 
 dan.positions.create(shares: 3, purchase_price: 42000.99, purchase_date: '2017-05-26', coin_id: BTC.id)
 dan.positions.create(shares: 10, purchase_price: 1750.20, purchase_date: '2017-07-02', coin_id: LTC.id)
