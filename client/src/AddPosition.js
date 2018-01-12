@@ -19,19 +19,15 @@ class AddPosition extends Component {
 
   updateCurrency (e) {
     let newCurrency = e.target.value
-    console.log(newCurrency)
     this.setState({theCoin: newCurrency, defaultCoin: newCurrency}, this.fetchCoin(newCurrency))
   }
 
   fetchCoin (newCurrency) {
-    console.log('Fetching coin')
-    console.log('Fetching coin deatil for id: ' + newCurrency)
     $.ajax({
       url: 'https://cryptfolio-api.herokuapp.com/api/coin_symbol/' + newCurrency,
       type: 'GET',
       context: this, // Allows us to use this.setState inside success
       success: function (result) {
-        console.log(result)
         this.setState({coin: JSON.parse(JSON.stringify(result[0])), loaded: true})
       },
       error: function (xhr) {

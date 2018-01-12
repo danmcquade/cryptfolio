@@ -30,7 +30,6 @@ class Login extends Component {
         $('.loginform').hide()
         $('.logout').show()
         $('.notification').empty()
-        $('.notification').append('<strong>Login successful</strong>')
         this.setState({loggedIn: true})
         this.props.setLoginState(true)
         this.props.whoAmIf()
@@ -43,7 +42,7 @@ class Login extends Component {
       }.bind(this),
       error: function (xhr) {
         $('.notification').empty()
-        $('.notification').append('<strong>Login failed</strong>')
+        $('.notification').append('<strong style=\'color: red;\'>Login failed</strong>')
         console.log('Login failed')
       }
     })
@@ -51,11 +50,7 @@ class Login extends Component {
 
   componentDidMount () {
     $('.logout').hide()
-    console.log('Login Component Mounted!')
-    if (!localStorage.getItem('cryptfolio-jwt')) {
-      console.log('Not logged in')
-    } else {
-      console.log('We have a token!')
+    if (localStorage.getItem('cryptfolio-jwt')) {
       this.setState({loggedIn: true})
       $('.loginform').hide()
       $('.logout').show()

@@ -42,11 +42,9 @@ class Nav extends Component {
   }
 
   logout () {
-    console.log('Clearing local storage...')
     localStorage.removeItem('cryptfolio-jwt')
     this.props.setLoginState(false)
     this.props.clearWhoAmI()
-    console.log('Logged out.')
   }
 
   componentDidMount () {
