@@ -22,6 +22,14 @@ class CoinsController < ApplicationController
     render json: data
   end
 
+  def symbol_lookup
+    @coin = Coin.find_by(symbol: params[:id])
+    url = "https://api.coinmarketcap.com/v1/ticker/#{@coin.api_id}/"
+    resp = Net::HTTP.get_response(URI.parse(url))
+    data = JSON.parse(resp.body)
+    render json: data
+  end
+
   def list
     @coins = Coin.all
     render json: @coins

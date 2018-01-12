@@ -1,0 +1,25 @@
+.add-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.add-coin-detail {
+  position: relative;
+  top: -10px;
+  text-align: left;
+  width: 300px;
+}
+.add-coin-detail a {
+  color: #2e45b7;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.add-icon {
+  max-width: 35px;
+}
+
+.add-form {
+  text-align: right;
+}
