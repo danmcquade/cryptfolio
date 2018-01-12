@@ -27,12 +27,15 @@ class Dashboard extends Component {
       detailModalIsOpen: false,
       currentItem: -1,
       loading: false,
-      coinId: 'bitcoin'
+      coin_id: 'bitcoin'
     }
+    this.toggleModal = this.toggleModal.bind(this)
+    this.handleModalCloseRequest = this.handleModalCloseRequest.bind(this)
+    this.handleOnAfterOpenModal = this.handleOnAfterOpenModal.bind(this)
   }
 
-  toggleModal (event) {
-    event.preventDefault()
+  toggleModal (e) {
+    e.preventDefault()
     if (this.state.detailModalIsOpen) {
       this.handleModalCloseRequest()
       return
@@ -75,7 +78,7 @@ class Dashboard extends Component {
   }
 
   openModal (e, coinId) {
-    this.setState({coinId: coinId}, this.toggleModal(e))
+    this.setState({coin_id: coinId}, this.toggleModal(e))
   }
 
   render () {
@@ -128,7 +131,7 @@ class Dashboard extends Component {
             style={modalStyle}
             onAfterOpen={this.handleOnAfterOpenModal}
             onRequestClose={this.toggleModal}>
-            <DetailModal loggedIn={this.props.loggedIn} coinId={this.state.coinId} toggleModal={this.toggleModal} currencyFormat={this.props.currencyFormat} />
+            <DetailModal loggedIn={this.props.loggedIn} coin_id={this.state.coin_id} toggleModal={this.toggleModal} currencyFormat={this.props.currencyFormat} />
           </Modal>
         </div>
       )

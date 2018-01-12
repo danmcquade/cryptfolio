@@ -10,13 +10,7 @@ User.destroy_all
 Coin.destroy_all
 Position.destroy_all
 
-dan = User.new
-dan.email = 'dan@gmail.com'
-dan.name = 'Dan McQuade'
-dan.password = 'test'
-dan.password_confirmation = 'test'
-dan.admin = true
-dan.save
+dan = User.create(email: 'dan@danmcq.com', name: 'Dan McQuade', password: 'test', password_confirmation: 'test', admin: true)
 
 BTC = Coin.create(name: 'Bitcoin', symbol: 'BTC', api_id: 'bitcoin')
 LTC = Coin.create(name: 'Litecoin', symbol: 'LTC', api_id: 'litecoin')
