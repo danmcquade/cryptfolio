@@ -43,3 +43,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'knock'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'gravtastic'
+gem "rails_12factor", group: :production
