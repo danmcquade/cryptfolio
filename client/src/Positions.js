@@ -1,24 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import Modal from 'react-modal'
 import $ from 'jquery'
+import EditModal from './EditModal'
 import Header from './Header'
 import './Positions.css'
-import EditModal from './EditModal'
-
-import Modal from 'react-modal'
-
-
-const modalStyle = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    boxShadow: '0px 0px 5px #00000073'
-  }
-}
+import { modalStyle } from './ModalStyle'
 
 class Positions extends Component {
   constructor (props) {
@@ -33,6 +19,9 @@ class Positions extends Component {
       loading: false,
       items: []
     }
+    this.toggleModal = this.toggleModal.bind(this)
+    this.handleModalCloseRequest = this.handleModalCloseRequest.bind(this)
+    this.handleOnAfterOpenModal = this.handleOnAfterOpenModal.bind(this)
   }
 
   updatePositions () {
@@ -54,14 +43,12 @@ class Positions extends Component {
 
   getPositions () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
-    console.log(token)
     $.ajax({
       url: 'http://localhost:3001/api/positions',
       type: 'GET',
       beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
       context: this,
       success: function (result) {
-        console.log(result)
         this.setState({positions: JSON.parse(JSON.stringify(result))})
       },
       error: function (xhr) {
@@ -72,14 +59,12 @@ class Positions extends Component {
 
   getPositionsSummary () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
-    console.log(token)
     $.ajax({
       url: 'http://localhost:3001/api/positions/summary',
       type: 'GET',
       beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
       context: this,
       success: function (result) {
-        console.log(result)
         this.setState({summary: JSON.parse(JSON.stringify(result))})
       },
       error: function (xhr) {
@@ -99,7 +84,6 @@ class Positions extends Component {
   deletePosition (id) {
     var check = window.confirm('Are you sure you want to delete this position?')
     if (check === true) {
-      console.log('Deleteing position id: ' + id)
       let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
       $.ajax({
         url: 'http://localhost:3001/api/positions/delete/' + id,
@@ -107,7 +91,6 @@ class Positions extends Component {
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
         context: this,
         success: function (result) {
-          console.log(result)
           this.setState({positions: JSON.parse(JSON.stringify(result))})
           this.getPositionsSummary()
         },
@@ -134,53 +117,45 @@ class Positions extends Component {
     })
   }
 
-/* --------------------------------------------------------------- */
-/* --------------------------------------------------------------- */
-/* --------------------------------------------------------------- */
-/* --------------------------------------------------------------- */
-
-toggleModal = event => {
-  if (event){
-    event.preventDefault()
-  }
-  if (this.state.editPositionIsOpen) {
-    this.handleModalCloseRequest();
-    return;
-  }
-  this.setState({
-    editPositionIsOpen: true,
-    loading: true
-  });
-}
-
-handleModalCloseRequest = () => {
-  this.setState({
-    editPositionIsOpen: false,
-    loading: false
-  });
-}
-
-handleOnAfterOpenModal = () => {
-  (new Promise((resolve, reject) => {
-    setTimeout(() => resolve(true), 500);
-  })).then(res => {
+  toggleModal (e) {
+    if (e) {
+      e.preventDefault()
+    }
+    if (this.state.editPositionIsOpen) {
+      this.handleModalCloseRequest()
+      return
+    }
     this.setState({
+      editPositionIsOpen: true,
+      loading: true
+    })
+  }
+
+  handleModalCloseRequest () {
+    this.setState({
+      editPositionIsOpen: false,
       loading: false
-    });
-  });
-}
+    })
+  }
 
-openEditModal(e, id) {
-  this.setState({position_id: id}, this.toggleModal(e))
-}
+  handleOnAfterOpenModal () {
+    (new Promise((resolve, reject) => {
+      setTimeout(() => resolve(true), 500)
+    })).then(res => {
+      this.setState({
+        loading: false
+      })
+    })
+  }
 
-
+  openEditModal (e, id) {
+    this.setState({position_id: id}, this.toggleModal(e))
+  }
 
   render () {
-    const { editPositionIsOpen } = this.state;
+    const { editPositionIsOpen } = this.state
 
     const allPositions = this.state.positions.map((pos, index) => {
-      const detailUrl = '/detail/' + pos.api_id
       let gainLoss = (pos.value - pos.price)
       let gainColor = {}
       if (gainLoss > 0) {
@@ -190,7 +165,7 @@ openEditModal(e, id) {
       }
       return (
         <div className='position-detail' key={index}>
-          <p><Link to={detailUrl}><strong>{pos.name} ({pos.symbol})</strong></Link></p>
+          <p><strong>{pos.name} ({pos.symbol})</strong></p>
           <p><strong>Shares: </strong>{pos.shares}</p>
           <p><strong>Purchase Price: </strong>${this.props.currencyFormat(parseFloat(pos.price))}</p>
           <p><strong>Current value: </strong>${this.props.currencyFormat(parseFloat(pos.value))}</p>
@@ -223,9 +198,8 @@ openEditModal(e, id) {
             {allPositions}
           </div>
           <Modal
-            id="test"
+            id='Edit Position'
             closeTimeoutMS={150}
-            contentLabel="modalA"
             isOpen={editPositionIsOpen}
             style={modalStyle}
             onAfterOpen={this.handleOnAfterOpenModal}
