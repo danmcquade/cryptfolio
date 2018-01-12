@@ -3,19 +3,8 @@ import { Link } from 'react-router-dom'
 import $ from 'jquery'
 import Modal from 'react-modal'
 import DetailModal from './DetailModal'
+import { modalStyle } from './ModalStyle'
 import './Dashboard.css'
-
-const modalStyle = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    boxShadow: '0px 0px 5px #00000073'
-  }
-}
 
 class Dashboard extends Component {
   constructor (props) {
@@ -124,9 +113,8 @@ class Dashboard extends Component {
             {allCoins}
           </div>
           <Modal
-            id='test'
+            id='Currency Details'
             closeTimeoutMS={150}
-            contentLabel='modalA'
             isOpen={detailModalIsOpen}
             style={modalStyle}
             onAfterOpen={this.handleOnAfterOpenModal}
