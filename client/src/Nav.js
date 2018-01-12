@@ -67,7 +67,7 @@ class Nav extends Component {
     return (
       <div>
         <nav>
-          <Link to='/'><img className='nav-logo' alt='Cryptfolio Logo' src='/logo.png' /></Link>
+          <Link to='/'><img className='nav-logo' alt='Cryptfolio Logo' src='http://cdn.danmcq.com/cryptfolio/logo.png' /></Link>
           <Link className='nav-link' to='/' >Home</Link>
           <Link className='nav-link' to='/positions'>Positions</Link>
           {loginButton}

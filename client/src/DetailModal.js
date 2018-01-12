@@ -35,7 +35,7 @@ class DetailModal extends Component {
         <h3>Loading...</h3>
       )
     } else {
-      const iconImage = '/icons/' + this.state.coin.symbol.toLowerCase() + '.png'
+      const iconImage = 'http://cdn.danmcq.com/cryptfolio/icons/' + this.state.coin.symbol.toLowerCase() + '.png'
       let changeColor1H = {}
       let changeColor24H = {}
       let changeColor7D = {}
