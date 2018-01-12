@@ -57,7 +57,7 @@ class Nav extends Component {
     let loginButton
     let avatarImg = null
     if (this.props.loggedIn) {
-      loginButton = <Link to='/' onClick={() => { this.logout() }} className='nav-link push-right'>Logout</Link>
+      loginButton = <Link to='/cryptfolio' onClick={() => { this.logout() }} className='nav-link push-right'>Logout</Link>
       if (this.props.whoami) {
         avatarImg = <div className='nav-avatar'><Link to='/positions'><img src={this.props.whoami.avatar} alt={`${this.props.whoami.name}'s Avatar'`} /></Link></div>
       }
