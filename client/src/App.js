@@ -72,7 +72,7 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path='/' render={() => (
-              <Dashboard currencyFormat={this.currencyFormat} />
+              <Dashboard loggedIn={this.state.loggedIn} currencyFormat={this.currencyFormat} />
             )} />
             <Route exact path='/login' render={(props) => (
               <Login loggedIn={this.state.loggedIn} whoAmIf={this.whoAmIf} setLoginState={this.setLoginState} {...props} />

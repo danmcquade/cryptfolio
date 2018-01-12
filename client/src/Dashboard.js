@@ -1,7 +1,21 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import $ from 'jquery'
+import Modal from 'react-modal'
+import DetailModal from './DetailModal'
 import './Dashboard.css'
+
+const modalStyle = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    boxShadow: '0px 0px 5px #00000073'
+  }
+}
 
 class Dashboard extends Component {
   constructor (props) {
@@ -9,9 +23,50 @@ class Dashboard extends Component {
     this.state = {
       coins: [],
       loaded: false,
-      login: false
+      login: false,
+      detailModalIsOpen: false,
+      currentItem: -1,
+      loading: false,
+      coin_id: 'bitcoin'
     }
   }
+
+  toggleModal = event => {
+    event.preventDefault()
+    if (this.state.detailModalIsOpen) {
+      this.handleModalCloseRequest()
+      return
+    }
+    this.setState({
+      detailModalIsOpen: true,
+      loading: true
+    })
+  }
+
+  handleModalCloseRequest = () => {
+    // opportunity to validate something and keep the modal open even if it
+    // requested to be closed
+    this.setState({
+      detailModalIsOpen: false,
+      loading: false
+    });
+  }
+
+  handleOnAfterOpenModal = () => {
+    // when ready, we can access the available refs.
+    (new Promise((resolve, reject) => {
+      setTimeout(() => resolve(true), 500);
+    })).then(res => {
+      this.setState({
+        loading: false
+      });
+    });
+  }
+
+  cleanCurrentItem = () => {
+    this.setState({ currentItem: -1 });
+  }
+
 
   componentDidMount () {
     $.ajax({
@@ -19,7 +74,6 @@ class Dashboard extends Component {
       type: 'GET',
       context: this, // Allows us to use this.setState inside success
       success: function (result) {
-        console.log(result)
         this.setState({coins: JSON.parse(JSON.stringify(result)), loaded: true})
       },
       error: function (xhr) {
@@ -28,7 +82,12 @@ class Dashboard extends Component {
     })
   }
 
+  openModal(e, coin_id) {
+    this.setState({coin_id: coin_id}, this.toggleModal(e))
+  }
+
   render () {
+    const { detailModalIsOpen } = this.state;
     const allCoins = this.state.coins.map((coin, index) => {
       let changeColor = {}
       if (coin.percent_change_24h > 0) {
@@ -41,8 +100,8 @@ class Dashboard extends Component {
       const altTxt = `${coin.name} icon image`
       return (
         <div className='coin-detail' key={index}>
-          <div className='icon-container'><Link to={detailUrl}><img className='crypto-icon' alt={altTxt} src={iconImage} /></Link></div>
-          <p><strong>Name:</strong> <Link to={detailUrl}>{coin.name}</Link></p>
+          <div className='icon-container'><Link to={detailUrl} onClick={(e) => {this.openModal(e, coin.id)}}><img className='crypto-icon' alt={altTxt} src={iconImage} /></Link></div>
+          <p><strong>Name:</strong> <Link to={detailUrl} onClick={(e) => {this.openModal(e, coin.id)}}>{coin.name}</Link></p>
           <p><strong>Symbol:</strong> {coin.symbol}</p>
           <p><strong>Price (USD):</strong> ${this.props.currencyFormat(parseFloat(coin.price_usd))}</p>
           <p><strong>Change (24H): <span style={changeColor}>{parseFloat(coin.percent_change_24h) > 0 ? '+' : null}{parseFloat(coin.percent_change_24h).toFixed(2)}%</span></strong></p>
@@ -53,7 +112,7 @@ class Dashboard extends Component {
       return (
         <div>
           <div className='header-container'><img className='dashboard-logo' alt='Cryptfolio Logo' src='/header-alt-logo.png' /></div>
-          <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
           <div className='coins-container loading'>
             <h3>Loading...</h3>
           </div>
@@ -67,6 +126,16 @@ class Dashboard extends Component {
           <div className='coins-container'>
             {allCoins}
           </div>
+          <Modal
+            id="test"
+            closeTimeoutMS={150}
+            contentLabel="modalA"
+            isOpen={detailModalIsOpen}
+            style={modalStyle}
+            onAfterOpen={this.handleOnAfterOpenModal}
+            onRequestClose={this.toggleModal}>
+            <DetailModal loggedIn={this.props.loggedIn} coin_id={this.state.coin_id} toggleModal={this.toggleModal} currencyFormat={this.props.currencyFormat} />
+          </Modal>
         </div>
       )
     }

@@ -51,3 +51,15 @@
   display: flex;
   justify-content: center
 }
+
+.detail-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
