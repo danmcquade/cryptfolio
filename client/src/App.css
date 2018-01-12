@@ -1,5 +1,7 @@
 body {
   font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+
 }
 
 .App {
@@ -8,7 +10,10 @@ body {
 
 h1 {
   font-size: 1.5em;
-  text-shadow: 1px 1px 1px #b1b1b1;
+  letter-spacing: 3px;
+  font-family: 'Archivo Black', sans-serif;
+  color: #2d2b2b;
+  text-transform: uppercase;
 }
 
 button, input[type=submit] {

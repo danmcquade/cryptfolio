@@ -8,6 +8,8 @@ nav {
 	z-index: 9;
 	box-shadow: 0px 1px 10px black;
 	position: relative;
+	font-family: 'Helvetica', sans-serif;
+	font-weight: 900;
 }
 nav .nav-logo {
 	max-width: 50px;

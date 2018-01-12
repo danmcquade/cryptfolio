@@ -109,7 +109,7 @@ class Dashboard extends Component {
       return (
         <div>
           <div className='header-container'><img className='dashboard-logo' alt='Cryptfolio Logo' src='/white-header-logo.png' /></div>
-          <h2>Dashboard</h2>
+          <h1>Dashboard</h1>
           <div className='coins-container loading'>
             <h3>Loading...</h3>
           </div>
@@ -119,7 +119,7 @@ class Dashboard extends Component {
       return (
         <div>
           <div className='header-container'><img className='dashboard-logo' alt='Cryptfolio Logo' src='/white-header-logo.png' /></div>
-          <h2>Dashboard</h2>
+          <h1>Dashboard</h1>
           <div className='coins-container'>
             {allCoins}
           </div>
