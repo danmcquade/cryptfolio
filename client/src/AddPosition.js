@@ -82,7 +82,9 @@ class AddPosition extends Component {
     } else {
       this.fetchCoin('BTC')
     }
-    document.getElementById('datePicker').valueAsDate = new Date()
+    if ($('[type="date"]').prop('type') === 'date') {
+      document.getElementById('datePicker').valueAsDate = new Date()
+    }
   }
 
   render () {
