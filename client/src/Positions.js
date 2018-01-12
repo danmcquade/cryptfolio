@@ -188,7 +188,7 @@ class Positions extends Component {
       }
 
       return (
-        <div>
+        <div className='positions-container'>
           <Header />
           <h1>Positions</h1>
           <h3>Positions for {this.props.whoami.name}</h3>
@@ -210,7 +210,7 @@ class Positions extends Component {
       )
     } else if (!this.props.loggedIn) {
       return (
-        <div>
+        <div className='positions-container'>
           <Header />
           <h1>Positions</h1>
           <h3>Must be logged in to view positions</h3>
@@ -218,7 +218,7 @@ class Positions extends Component {
       )
     } else {
       return (
-        <div>
+        <div className='positions-container'>
           <Header />
           <h1>Positions</h1>
           <h3>Loading...</h3>
