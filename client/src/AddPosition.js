@@ -112,7 +112,7 @@ class AddPosition extends Component {
       coinDetail =
         <div className='add-coin-detail'>
           <div className='add-coin-detail-image'>
-            <img className='add-icon' src={`http://cdn.danmcq.com/cryptfolio/icons/${this.state.coin.symbol}.png`} alt={altTxt} />
+            <img className='add-icon' src={`http://cdn.danmcq.com/cryptfolio/icons/${this.state.coin.symbol.toLowerCase()}.png`} alt={altTxt} />
           </div>
           <div className='add-coin-detail-data'>
             <p><strong>Name:</strong> <Link to={detailUrl}>{this.state.coin.name}</Link></p>
