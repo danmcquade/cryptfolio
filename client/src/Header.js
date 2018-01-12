@@ -4,7 +4,7 @@ import './Header.css'
 
 const Header = () => {
   return (
-    <Link to='/'><img className='header-logo' alt='Cryptfolio Logo' src={ process.env.PUBLIC_URL + '/color-header-logo.png'} /></Link>
+    <Link to='/'><img className='header-logo' alt='Cryptfolio Logo' src={'http://cdn.danmcq.com/cryptfolio/color-header-logo.png'} /></Link>
   )
 }
 
