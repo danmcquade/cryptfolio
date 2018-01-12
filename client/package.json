@@ -1,6 +1,6 @@
 {
   "name": "cryptfolio-client",
-  "homepage": "https://danmcquade.github.io/cryptfolio",
+  "homepage": "https://danmcquade.github.io/cryptfolio/",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
