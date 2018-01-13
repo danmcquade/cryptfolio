@@ -27,6 +27,7 @@ nav a.nav-link {
 	padding: 20px;
 	font-size: 1.2em;
 	text-decoration: none;
+	outline: 0;
 }
 
 nav a.nav-link:hover {

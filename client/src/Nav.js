@@ -2,20 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './Nav.css'
 import Modal from 'react-modal'
+import { modalStyle } from './ModalStyle'
 import Login from './Login'
 import Register from './Register'
-
-const modalStyle = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    boxShadow: '0px 0px 5px #00000073'
-  }
-}
 
 class Nav extends Component {
   constructor () {
