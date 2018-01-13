@@ -13,7 +13,6 @@ Cryptfolio is a full-stack web application that allows users to monitor real-tim
 ---
 
 ## Summary
-
 From the main dashbaord, real-time pricing is displayed for all supported cryptocurrencies. Users have the option to register an account, and once they have registered and logged in, they are able to add their own positions in various cryptocurrencies to their portfolio.  
 ---
 
@@ -39,12 +38,12 @@ Cryptfolio utilizes a Ruby on Rails API back-end with a PostgreSQL database, and
 
 - Knock by Arnaud Mesureur for JWT authentication
 
-...https://github.com/nsarno/knock
+   https://github.com/nsarno/knock
 
 - Gravtastic by Chris Lloyd for Gravtar avatars
 
-...https://github.com/chrislloyd/gravtastic
+   https://github.com/chrislloyd/gravtastic
 
 - Christopher Downer's cryptocurrency icon collection
 
-...https://github.com/cjdowner/cryptocurrency-icons
+   https://github.com/cjdowner/cryptocurrency-icons
