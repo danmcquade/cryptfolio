@@ -2,9 +2,8 @@
 
 Cryptfolio is a full-stack web application that allows users to monitor real-time pricing data for various cryptocurrencies, and track their own positions in those currencies. Currently the app is capable of tracking Bitcoin, Bitcoin Cash, Dash, Ethereum, IOTA, Litecoin, Monero, NEM, Ripple and Zcash.
 
-## Live Deployments
-- Front-end: https://danmcquade.github.io/cryptfolio/
-- Back-end: https://cryptfolio-api.herokuapp.com/api/coins
+## Live Deployment
+- https://danmcquade.github.io/cryptfolio/
 
 ![Cryptfolio Preview Screenshot](https://github.com/danmcquade/cryptfolio/blob/master/preview.png)
 
