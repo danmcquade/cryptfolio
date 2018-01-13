@@ -38,10 +38,13 @@ Cryptfolio utilizes a Ruby on Rails API back-end with a PostgreSQL database, and
 ## External Resources Used
 
 - Knock by Arnaud Mesureur for JWT authentication
-... https://github.com/nsarno/knock
+
+...https://github.com/nsarno/knock
 
 - Gravtastic by Chris Lloyd for Gravtar avatars
-... https://github.com/chrislloyd/gravtastic
+
+...https://github.com/chrislloyd/gravtastic
 
 - Christopher Downer's cryptocurrency icon collection
-... https://github.com/cjdowner/cryptocurrency-icons
+
+...https://github.com/cjdowner/cryptocurrency-icons
