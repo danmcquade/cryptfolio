@@ -1,24 +1,40 @@
-# README
+# Cryptfolio - A full-stack cryptocurrency portfolio tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Cryptfolio is a full-stack web application that allows users to monitor real-time pricing data for various cryptocurrencies, and track their own positions in those currencies. Currently the app is capable of tracking Bitcoin, Bitcoin Cash, Dash, Ethereum, IOTA, Litecoin, Monero, NEM, Ripple and Zcash.
 
-Things you may want to cover:
+## Live Deployments
+- Front-end: https://danmcquade.github.io/cryptfolio/
+- Back-end: https://cryptfolio-api.herokuapp.com/api/coins
 
-* Ruby version
+![Cryptfolio Preview Screenshot](https://github.com/danmcquade/cryptfolio/blob/master/preview.png)
 
-* System dependencies
+## Summary
 
-* Configuration
+From the main dashbaord, real-time pricing is displayed for all supported cryptocurrencies. Users have the option to register an account, and once they have registered and logged in, they are able to add their own positions in various cryptocurrencies to their portfolio.  
 
-* Database creation
+## Features
+- Real-time price data for numerous cryptocurrencies
+- User login and registration
+- Individual portfolios for tracking cryptocurrency positions
+- Ability to add, edit and delete positions
 
-* Database initialization
+## Technologies Used
+Cryptfolio utilizes a Ruby on Rails API back-end with a PostgreSQL database, and a React front-end
 
-* How to run the test suite
+- React
+- Ruby on Rails
+- PostgreSQL
+- JSON Web Tokens (JWT)
+- Gravatar Avatars
+- Heroku (back-end API deployment)
 
-* Services (job queues, cache servers, search engines, etc.)
+## External Resources Used
 
-* Deployment instructions
+- The Knock gem for user authentication with JWT
+-- https://github.com/nsarno/knock
 
-* ...
+- Gravtastic by Chris Lloyd for Gravtar avatars
+-- https://github.com/chrislloyd/gravtastic
+
+- Christopher Downer's cryptocurrency icon collection
+-- https://github.com/cjdowner/cryptocurrency-icons
