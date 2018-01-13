@@ -19,11 +19,6 @@ class EditPosition extends Component {
       updatedPosition: {}
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.click = this.click.bind(this)
-  }
-
-  click () {
-    console.log(this.state.position)
   }
 
   handleSubmit (e) {
