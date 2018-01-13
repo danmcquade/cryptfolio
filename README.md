@@ -6,22 +6,16 @@ Cryptfolio is a full-stack web application that allows users to monitor real-tim
 - Front-end: https://danmcquade.github.io/cryptfolio/
 - Back-end: https://cryptfolio-api.herokuapp.com/api/coins
 
----
-
 ![Cryptfolio Preview Screenshot](https://github.com/danmcquade/cryptfolio/blob/master/preview.png)
 
----
-
 ## Summary
-From the main dashbaord, real-time pricing is displayed for all supported cryptocurrencies. Users have the option to register an account, and once they have registered and logged in, they are able to add their own positions in various cryptocurrencies to their portfolio.  
----
+- From the main dashbaord, real-time pricing is displayed for all supported cryptocurrencies. Users have the option to register an account, and once they have registered and logged in, they are able to add their own positions in various cryptocurrencies to their portfolio.  
 
 ## Features
 - Real-time price data for numerous cryptocurrencies
 - User login and registration
 - Individual portfolios for tracking cryptocurrency positions
 - Ability to add, edit and delete positions
----
 
 ## Technologies Used
 Cryptfolio utilizes a Ruby on Rails API back-end with a PostgreSQL database, and a React front-end
@@ -32,7 +26,6 @@ Cryptfolio utilizes a Ruby on Rails API back-end with a PostgreSQL database, and
 - JSON Web Tokens (JWT)
 - Gravatar Avatars
 - Heroku (back-end API deployment)
----
 
 ## External Resources Used
 
