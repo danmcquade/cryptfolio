@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import $ from 'jquery'
+import { API_ENDPOINT } from './Api'
+
 
 class DetailModal extends Component {
   constructor (props) {
@@ -12,7 +14,7 @@ class DetailModal extends Component {
 
   componentDidMount () {
     $.ajax({
-      url: 'https://cryptfolio-api.herokuapp.com/api/coins/' + this.props.coin_id,
+      url: API_ENDPOINT + '/api/coins/' + this.props.coin_id,
       type: 'GET',
       context: this, // Allows us to use this.setState inside success
       success: function (result) {

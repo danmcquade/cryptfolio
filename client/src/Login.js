@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
 import $ from 'jquery'
+import { API_ENDPOINT } from './Api'
 
 class Login extends Component {
   constructor (props) {
@@ -21,7 +22,7 @@ class Login extends Component {
     }.bind(this)
 
     $.ajax({
-      url: 'https://cryptfolio-api.herokuapp.com/api/user_token',
+      url: API_ENDPOINT + '/api/user_token',
       type: 'POST',
       data: request,
       dataType: 'json',

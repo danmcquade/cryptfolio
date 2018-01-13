@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import $ from 'jquery'
+import { API_ENDPOINT } from './Api'
 import './EditPosition.css'
 
 class EditModal extends Component {
@@ -37,7 +38,7 @@ class EditModal extends Component {
     this.setState({updatedPosition: updatedPosition}, () => {
       let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
       $.ajax({
-        url: 'https://cryptfolio-api.herokuapp.com/api/positions/' + this.state.position.id,
+        url: API_ENDPOINT + '/api/positions/' + this.state.position.id,
         type: 'PUT',
         data: this.state.updatedPosition,
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
@@ -94,7 +95,7 @@ class EditModal extends Component {
   componentDidMount () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
-      url: 'https://cryptfolio-api.herokuapp.com/api/coins/list',
+      url: API_ENDPOINT + '/api/coins/list',
       type: 'GET',
       context: this,
       success: function (result) {
@@ -105,7 +106,7 @@ class EditModal extends Component {
       }
     }).then(
       $.ajax({
-        url: 'https://cryptfolio-api.herokuapp.com/api/positions/' + this.state.position_id,
+        url: API_ENDPOINT + '/api/positions/' + this.state.position_id,
         type: 'GET',
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
         context: this,

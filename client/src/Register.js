@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import $ from 'jquery'
+import { API_ENDPOINT } from './Api'
 
 class Register extends Component {
   constructor () {
@@ -21,13 +22,13 @@ class Register extends Component {
       this.props.history.push('/positions')
     }.bind(this)
     $.ajax({
-      url: 'https://cryptfolio-api.herokuapp.com/users',
+      url: API_ENDPOINT + '/users',
       type: 'POST',
       data: request,
       dataType: 'json',
       success: function (result) {
         $.ajax({
-          url: 'https://cryptfolio-api.herokuapp.com/api/user_token',
+          url: API_ENDPOINT + '/api/user_token',
           type: 'POST',
           data: loginRequest,
           dataType: 'json',

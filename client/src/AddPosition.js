@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
 import Header from './Header'
+import { API_ENDPOINT } from './Api'
 import './AddPosition.css'
 
 class AddPosition extends Component {
@@ -23,7 +24,7 @@ class AddPosition extends Component {
 
   fetchCoin (newCurrency) {
     $.ajax({
-      url: 'https://cryptfolio-api.herokuapp.com/api/coin_symbol/' + newCurrency,
+      url: API_ENDPOINT + '/api/coin_symbol/' + newCurrency,
       type: 'GET',
       context: this, // Allows us to use this.setState inside success
       success: function (result) {
@@ -49,7 +50,7 @@ class AddPosition extends Component {
     this.setState({position: newPosition}, () => {
       let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
       $.ajax({
-        url: 'https://cryptfolio-api.herokuapp.com/api/positions',
+        url: API_ENDPOINT + '/api/positions',
         type: 'POST',
         data: this.state.position,
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
@@ -65,7 +66,7 @@ class AddPosition extends Component {
 
   componentDidMount () {
     $.ajax({
-      url: 'https://cryptfolio-api.herokuapp.com/api/coins/list',
+      url: API_ENDPOINT + '/api/coins/list',
       type: 'GET',
       context: this, // Allows us to use this.setState inside success
       success: function (result) {

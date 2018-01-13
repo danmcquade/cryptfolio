@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import $ from 'jquery'
 import './App.css'
+import { API_ENDPOINT } from './Api'
 import AddPosition from './AddPosition'
 import CoinDetail from './CoinDetail'
 import Dashboard from './Dashboard'
@@ -45,7 +46,7 @@ class App extends Component {
   whoAmIf () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
-      url: 'https://cryptfolio-api.herokuapp.com/api/whoami',
+      url: API_ENDPOINT + '/api/whoami',
       type: 'GET',
       beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
       context: this,

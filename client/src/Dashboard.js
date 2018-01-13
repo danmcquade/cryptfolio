@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import $ from 'jquery'
 import Modal from 'react-modal'
+import { API_ENDPOINT } from './Api'
 import DetailModal from './DetailModal'
 import { modalStyle } from './ModalStyle'
 import './Dashboard.css'
@@ -54,7 +55,7 @@ class Dashboard extends Component {
 
   componentDidMount () {
     $.ajax({
-      url: 'https://cryptfolio-api.herokuapp.com/api/coins',
+      url: API_ENDPOINT + '/api/coins',
       type: 'GET',
       context: this, // Allows us to use this.setState inside success
       success: function (result) {

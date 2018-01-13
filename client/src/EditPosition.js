@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
 import Header from './Header'
+import { API_ENDPOINT } from './Api'
 import './EditPosition.css'
 
 class EditPosition extends Component {
@@ -37,7 +38,7 @@ class EditPosition extends Component {
     this.setState({updatedPosition: updatedPosition}, () => {
       let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
       $.ajax({
-        url: 'https://cryptfolio-api.herokuapp.com/api/positions/' + this.state.position.id,
+        url: API_ENDPOINT + '/api/positions/' + this.state.position.id,
         type: 'PUT',
         data: this.state.updatedPosition,
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
@@ -95,7 +96,7 @@ class EditPosition extends Component {
   componentDidMount () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
-      url: 'https://cryptfolio-api.herokuapp.com/api/coins/list',
+      url: API_ENDPOINT + '/api/coins/list',
       type: 'GET',
       context: this, // Allows us to use this.setState inside success
       success: function (result) {
@@ -106,7 +107,7 @@ class EditPosition extends Component {
       }
     }).then(
       $.ajax({
-        url: 'https://cryptfolio-api.herokuapp.com/api/positions/' + this.state.position_id,
+        url: API_ENDPOINT + '/api/positions/' + this.state.position_id,
         type: 'GET',
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
         context: this,

@@ -3,6 +3,7 @@ import Modal from 'react-modal'
 import $ from 'jquery'
 import EditModal from './EditModal'
 import Header from './Header'
+import { API_ENDPOINT } from './Api'
 import './Positions.css'
 import { modalStyle } from './ModalStyle'
 
@@ -41,7 +42,7 @@ class Positions extends Component {
   getPositions () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
-      url: 'https://cryptfolio-api.herokuapp.com/api/positions',
+      url: API_ENDPOINT + '/api/positions',
       type: 'GET',
       beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
       context: this,
@@ -57,7 +58,7 @@ class Positions extends Component {
   getPositionsSummary () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
-      url: 'https://cryptfolio-api.herokuapp.com/api/positions/summary',
+      url: API_ENDPOINT + '/api/positions/summary',
       type: 'GET',
       beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
       context: this,
@@ -83,7 +84,7 @@ class Positions extends Component {
     if (check === true) {
       let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
       $.ajax({
-        url: 'https://cryptfolio-api.herokuapp.com/api/positions/delete/' + id,
+        url: API_ENDPOINT + '/api/positions/delete/' + id,
         type: 'GET',
         beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
         context: this,
@@ -101,7 +102,7 @@ class Positions extends Component {
   whoAmI () {
     let token = 'Bearer ' + localStorage.getItem('cryptfolio-jwt')
     $.ajax({
-      url: 'https://cryptfolio-api.herokuapp.com/api/whoami',
+      url: API_ENDPOINT + '/api/whoami',
       type: 'GET',
       beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
       context: this,
