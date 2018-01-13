@@ -14,8 +14,6 @@ class Register extends Component {
     const name = $('#name').val()
     const request = {'user': {'email': email, 'name': name, 'password': password}}
     const loginRequest = {'auth': {'email': email, 'password': password}}
-    console.log(request)
-
     const closeMe = function () {
       this.props.closeRegisterModal()
       this.props.setLoginState(true)
@@ -28,14 +26,12 @@ class Register extends Component {
       data: request,
       dataType: 'json',
       success: function (result) {
-        console.log('User created successfully!')
         $.ajax({
           url: 'https://cryptfolio-api.herokuapp.com/api/user_token',
           type: 'POST',
           data: loginRequest,
           dataType: 'json',
           success: function (result) {
-            console.log('Logged in!')
             localStorage.setItem('cryptfolio-jwt', result.jwt)
             closeMe()
             var evt = document.createEvent('HTMLEvents')
@@ -49,7 +45,7 @@ class Register extends Component {
       },
       error: function (xhr) {
         $('.notification').empty()
-        $('.notification').append('<strong style=\'color: red;\'>Registration failed</strong>')
+        $('.notification').append('<strong style=\'color: red;\'>Registration failed</strong><br/><p>All fields required</p>')
         console.log('Registration failed')
       }
     })
