@@ -9,7 +9,8 @@ Cryptfolio is a full-stack web application that allows users to monitor real-tim
 ![Cryptfolio Preview Screenshot](https://github.com/danmcquade/cryptfolio/blob/master/preview.png)
 
 ## Summary
-- From the main dashbaord, real-time pricing is displayed for all supported cryptocurrencies. Users have the option to register an account, and once they have registered and logged in, they are able to add their own positions in various cryptocurrencies to their portfolio.  
+
+From the main dashbaord, real-time pricing is displayed for all supported cryptocurrencies. Users have the option to register an account, and once they have registered and logged in, they are able to add their own positions in various cryptocurrencies to their portfolio.  
 
 ## Features
 - Real-time price data for numerous cryptocurrencies
