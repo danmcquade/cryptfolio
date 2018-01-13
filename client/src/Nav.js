@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import './Nav.css'
 import Modal from 'react-modal'
 import Login from './Login'
+import Register from './Register'
 
 const modalStyle = {
   content: {
@@ -24,21 +25,25 @@ class Nav extends Component {
       modalIsOpen: false
     }
 
-    this.openModal = this.openModal.bind(this)
-    this.afterOpenModal = this.afterOpenModal.bind(this)
-    this.closeModal = this.closeModal.bind(this)
+    this.openLoginModal = this.openLoginModal.bind(this)
+    this.closeLoginModal = this.closeLoginModal.bind(this)
+    this.closeRegisterModal = this.closeRegisterModal.bind(this)
+    this.openRegisterModal = this.openRegisterModal.bind(this)
   }
 
-  openModal (e) {
+  openLoginModal (e) {
     e.preventDefault()
-    this.setState({modalIsOpen: true})
+    this.setState({loginModalIsOpen: true, registerModalIsOpen: false})
   }
-
-  afterOpenModal () {
+  openRegisterModal (e) {
+    e.preventDefault()
+    this.setState({loginModalIsOpen: false, registerModalIsOpen: true})
   }
-
-  closeModal () {
-    this.setState({modalIsOpen: false})
+  closeLoginModal () {
+    this.setState({loginModalIsOpen: false})
+  }
+  closeRegisterModal () {
+    this.setState({registerModalIsOpen: false})
   }
 
   logout () {
@@ -60,7 +65,7 @@ class Nav extends Component {
         avatarImg = <div className='nav-avatar'><Link to='/positions'><img src={this.props.whoami.avatar} alt={`${this.props.whoami.name}'s Avatar'`} /></Link></div>
       }
     } else {
-      loginButton = <Link to='' onClick={(e) => { this.openModal(e) }} className='nav-link push-right'>Login</Link>
+      loginButton = <Link to='' onClick={(e) => { this.openLoginModal(e) }} className='nav-link push-right'>Login</Link>
     }
     return (
       <div>
@@ -71,15 +76,25 @@ class Nav extends Component {
           {loginButton}
           {avatarImg}
         </nav>
+
         <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
+          isOpen={this.state.loginModalIsOpen}
+          onRequestClose={this.closeLoginModal}
           style={modalStyle}
           contentLabel='Login'
         >
-          <Login loggedIn={this.props.loggedIn} setLoginState={this.props.setLoginState} whoAmIf={this.props.whoAmIf} closeModal={this.closeModal} />
+          <Login loggedIn={this.props.loggedIn} setLoginState={this.props.setLoginState} whoAmIf={this.props.whoAmIf} closeModal={this.closeLoginModal} openRegisterModal={this.openRegisterModal} />
         </Modal>
+
+        <Modal
+          isOpen={this.state.registerModalIsOpen}
+          onRequestClose={this.closeRegisterModal}
+          style={modalStyle}
+          contentLabel='Register'
+        >
+          <Register closeRegisterModal={this.closeRegisterModal} setLoginState={this.props.setLoginState} whoAmIf={this.props.whoAmIf} />
+        </Modal>
+
       </div>
     )
   }

@@ -72,6 +72,9 @@ nav .nav-avatar img {
 
 .login-form {
 	text-align: center;
+	font-size: 1.2em;
+	font-weight: 900;
+	font-family: 'Helvetica', sans-serif;
 }
 
 .login-input {

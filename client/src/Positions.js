@@ -13,11 +13,8 @@ class Positions extends Component {
       positions: [],
       summary: null,
       whoami: null,
-      fetched: false,
       editPositionIsOpen: false,
-      currentItem: -1,
-      loading: false,
-      items: []
+      loading: false
     }
     this.toggleModal = this.toggleModal.bind(this)
     this.handleModalCloseRequest = this.handleModalCloseRequest.bind(this)

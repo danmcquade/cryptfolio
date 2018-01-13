@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     post 'user_token' => 'user_token#create'
     get 'whoami' => 'positions#whoami'
   end
+  resources :users, only: [:create]
 end

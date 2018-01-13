@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom'
 import $ from 'jquery'
 
 class Login extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       bananasReceived: '',
@@ -64,7 +64,7 @@ class Login extends Component {
         <p className='notification' />
         <div className='login-form'>
           <form>
-            <label htmlFor='email'>Email: </label>
+            <label htmlFor='email'>Email</label>
             <br />
             <input
               className='login-input'
@@ -73,7 +73,7 @@ class Login extends Component {
               type='email'
             />
             <br /><br />
-            <label htmlFor='password'>Password:</label>
+            <label htmlFor='password'>Password</label>
             <br />
             <input
               className='login-input'
@@ -84,7 +84,7 @@ class Login extends Component {
           </form>
           <br />
           <button onClick={this.login}>Login</button>
-          <button onClick={this.props.closeModal}>Cancel</button>
+          <button onClick={this.props.openRegisterModal}>Register</button>
         </div>
       </div>
     )
