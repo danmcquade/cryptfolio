@@ -29,6 +29,10 @@ Cryptfolio utilizes a Ruby on Rails API back-end with a PostgreSQL database, and
 
 ## External Resources Used
 
+- CoinMarketCap for cryptocurrency pricing data
+
+   https://coinmarketcap.com/api/
+
 - Knock by Arnaud Mesureur for JWT authentication
 
    https://github.com/nsarno/knock
