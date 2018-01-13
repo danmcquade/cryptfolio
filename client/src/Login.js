@@ -35,10 +35,6 @@ class Login extends Component {
         this.props.whoAmIf()
         toPositions()
         this.props.closeModal()
-
-        var evt = document.createEvent('HTMLEvents')
-        evt.initEvent('click', false, true)
-        document.body.dispatchEvent(evt)
       }.bind(this),
       error: function (xhr) {
         $('.notification').empty()

@@ -34,9 +34,6 @@ class Register extends Component {
           success: function (result) {
             localStorage.setItem('cryptfolio-jwt', result.jwt)
             closeMe()
-            var evt = document.createEvent('HTMLEvents')
-            evt.initEvent('click', false, true)
-            document.body.dispatchEvent(evt)
           },
           error: function (xhr) {
             console.log('Fetch token failed')
