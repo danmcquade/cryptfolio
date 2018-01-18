@@ -23,7 +23,7 @@ module Cryptfolio
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'cryptfolio.danmcq.com'
+        origins ENV['DEPLOYMENT_URL']
         resource '*', :headers => :any, :methods => [:get, :post, :put, :options]
       end
     end
