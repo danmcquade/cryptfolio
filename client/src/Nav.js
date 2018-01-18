@@ -49,7 +49,7 @@ class Nav extends Component {
     let loginButton
     let avatarImg = null
     if (this.props.loggedIn) {
-      loginButton = <Link to='/cryptfolio' onClick={() => { this.logout() }} className='nav-link push-right'>Logout</Link>
+      loginButton = <Link to='/' onClick={() => { this.logout() }} className='nav-link push-right'>Logout</Link>
       if (this.props.whoami) {
         avatarImg = <div className='nav-avatar'><Link to='/positions'><img src={this.props.whoami.avatar} alt={`${this.props.whoami.name}'s Avatar'`} /></Link></div>
       }
@@ -59,8 +59,8 @@ class Nav extends Component {
     return (
       <div>
         <nav>
-          <Link to='/cryptfolio'><img className='nav-logo' alt='Cryptfolio Logo' src='https://s3.amazonaws.com/cryptfolio-cdn/logo.png' /></Link>
-          <Link className='nav-link' to='/cryptfolio' >Home</Link>
+          <Link to='/'><img className='nav-logo' alt='Cryptfolio Logo' src='https://s3.amazonaws.com/cryptfolio-cdn/logo.png' /></Link>
+          <Link className='nav-link' to='/' >Home</Link>
           <Link className='nav-link' to='/positions'>Positions</Link>
           {loginButton}
           {avatarImg}
