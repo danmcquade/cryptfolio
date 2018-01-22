@@ -20,3 +20,19 @@
   text-decoration: none;
   font-weight: 900;
 }
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+  .positions {
+    font-size: 18px
+  }
+
+  .position-detail {
+    width: 250px;
+    margin: 10px;
+  }
+}
