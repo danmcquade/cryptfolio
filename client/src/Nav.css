@@ -100,8 +100,8 @@ nav .nav-avatar img {
 }
 
 .ReactModal__Overlay--before-close {
-  opacity: 1;
-	transition: opacity 200ms ease-in-out;
+  opacity: 0;
+	transition: opacity 500ms ease-in-out;
 }
 
 .mobilenav {

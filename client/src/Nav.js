@@ -115,6 +115,7 @@ class Nav extends Component {
           isOpen={this.state.loginModalIsOpen}
           onRequestClose={this.closeLoginModal}
           style={modalStyle}
+          closeTimeoutMS={500}
           contentLabel='Login'
         >
           <Login loggedIn={this.props.loggedIn} setLoginState={this.props.setLoginState} whoAmIf={this.props.whoAmIf} closeModal={this.closeLoginModal} openRegisterModal={this.openRegisterModal} />
@@ -124,6 +125,7 @@ class Nav extends Component {
           isOpen={this.state.registerModalIsOpen}
           onRequestClose={this.closeRegisterModal}
           style={modalStyle}
+          closeTimeoutMS={500}
           contentLabel='Register'
         >
           <Register closeRegisterModal={this.closeRegisterModal} setLoginState={this.props.setLoginState} whoAmIf={this.props.whoAmIf} />
