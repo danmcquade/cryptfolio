@@ -113,7 +113,7 @@ nav .nav-avatar img {
 }
 
 @media only screen
-and (max-device-width : 550px) {
+and (max-width : 550px) {
 	button, input[type=submit] {
 		width: 110px;
 	}
