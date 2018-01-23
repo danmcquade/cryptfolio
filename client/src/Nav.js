@@ -37,6 +37,7 @@ class Nav extends Component {
   }
 
   logout () {
+    this.hideNav()
     localStorage.removeItem('cryptfolio-jwt')
     this.props.setLoginState(false)
     this.props.clearWhoAmI()
