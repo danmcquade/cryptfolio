@@ -104,7 +104,7 @@ class AddPosition extends Component {
     const altTxt = `${this.state.coin.name} icon image`
     let coinDetail = ''
     if (!this.state.coin.symbol) {
-      coinDetail = <h3>Loading....</h3>
+      coinDetail = <img src='https://s3.amazonaws.com/cryptfolio-cdn/spinner.svg' className='loading-spinner' alt='Loading Data' />
     } else {
       coinDetail =
         <div className='add-coin-detail'>

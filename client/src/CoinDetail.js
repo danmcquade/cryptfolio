@@ -31,7 +31,7 @@ class CoinDetail extends Component {
   render () {
     if (!this.state.loaded) {
       return (
-        <h3>Loading...</h3>
+        <img src='https://s3.amazonaws.com/cryptfolio-cdn/spinner.svg' className='loading-spinner' alt='Loading Data' />
       )
     } else {
       let changeColor1H = {}

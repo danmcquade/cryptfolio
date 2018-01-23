@@ -34,3 +34,7 @@ button:hover, input[type=submit]:hover {
 select {
   font-size: 20px;
 }
+
+.loading-spinner {
+  max-width: 120px;
+}

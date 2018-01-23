@@ -219,7 +219,7 @@ class Positions extends Component {
         <div className='positions-container'>
           <Header />
           <h1>Positions</h1>
-          <h3>Loading...</h3>
+          <img src='https://s3.amazonaws.com/cryptfolio-cdn/spinner.svg' className='loading-spinner' alt='Loading Data' />
         </div>
       )
     }

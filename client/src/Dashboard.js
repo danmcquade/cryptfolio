@@ -101,7 +101,7 @@ class Dashboard extends Component {
           <div className='header-container'><img className='dashboard-logo' alt='Cryptfolio Logo' src='https://s3.amazonaws.com/cryptfolio-cdn/white-header-logo.png' /></div>
           <h1>Dashboard</h1>
           <div className='coins-container loading'>
-            <h3>Loading...</h3>
+            <img src='https://s3.amazonaws.com/cryptfolio-cdn/spinner.svg' className='loading-spinner' alt='Loading Data' />
           </div>
         </div>
       )
