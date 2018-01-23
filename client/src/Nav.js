@@ -21,6 +21,7 @@ class Nav extends Component {
   }
 
   openLoginModal (e) {
+    this.hideNav()
     e.preventDefault()
     this.setState({loginModalIsOpen: true, registerModalIsOpen: false})
   }
@@ -45,9 +46,42 @@ class Nav extends Component {
     Modal.setAppElement('body')
   }
 
+  expandNav (e) {
+    console.log('expanding nav')
+    let linksEl = document.querySelector('.mobile-links')
+    let mobileNav = document.querySelector('.mobilenav')
+    if (linksEl.style.display === 'none') {
+      linksEl.style.display = 'block'
+      mobileNav.style.height = 'auto'
+    } else {
+      linksEl.style.display = 'none'
+      mobileNav.style.height = '58px'
+    }
+    e.preventDefault()
+  }
+
+  hideNav () {
+    console.log('hiding nav')
+    let linksEl = document.querySelector('.mobile-links')
+    let mobileNav = document.querySelector('.mobilenav')
+    linksEl.style.display = 'none'
+    mobileNav.style.height = '58px'
+  }
+
   render () {
     let loginButton
     let avatarImg = null
+    const navExp = {
+      fontSize: '35px',
+      color: '#ffffff',
+      textDecoration: 'none',
+      right: '15px',
+      position: 'absolute'
+
+    }
+    let mobStyle = {
+      display: 'none'
+    }
     if (this.props.loggedIn) {
       loginButton = <Link to='/' onClick={() => { this.logout() }} className='nav-link push-right'>Logout</Link>
       if (this.props.whoami) {
@@ -58,12 +92,22 @@ class Nav extends Component {
     }
     return (
       <div>
-        <nav>
+        <nav id='#myTopnav' className='topnav'>
           <Link to='/'><img className='nav-logo' alt='Cryptfolio Logo' src='https://s3.amazonaws.com/cryptfolio-cdn/logo.png' /></Link>
           <Link className='nav-link' to='/' >Home</Link>
           <Link className='nav-link' to='/positions'>Positions</Link>
           {loginButton}
           {avatarImg}
+        </nav>
+
+        <nav id='#responsiveNav' className='mobilenav'>
+          <Link to='/' onClick={() => { this.hideNav() }}><img className='nav-logo' alt='Cryptfolio Logo' src='https://s3.amazonaws.com/cryptfolio-cdn/logo.png' /></Link>
+          <a href='' style={navExp} className='icon' onClick={(e) => { this.expandNav(e) }}>☰</a>
+          <div className='mobile-links' style={mobStyle}>
+            <Link className='nav-link' to='/' onClick={() => { this.hideNav() }}>Home</Link>
+            <Link className='nav-link' to='/positions' onClick={() => { this.hideNav() }}>Positions</Link>
+            {loginButton}
+          </div>
         </nav>
 
         <Modal

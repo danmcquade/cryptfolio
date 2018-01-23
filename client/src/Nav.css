@@ -103,3 +103,47 @@ nav .nav-avatar img {
   opacity: 1;
 	transition: opacity 200ms ease-in-out;
 }
+
+.mobilenav {
+	display: none;
+}
+
+.mobile-links {
+	display: none;
+}
+
+@media only screen
+and (max-device-width : 550px) {
+	button, input[type=submit] {
+		width: 110px;
+	}
+
+	nav .nav-logo {
+		position: absolute;
+		left: 10px;
+	}
+	.topnav {
+		display: none;
+	}
+	.mobilenav {
+		height: 58px;
+		display: block;
+	}
+	.nav-avatar {
+		display: none;
+	}
+	.mobile-links {
+		top: 60px;
+		width: 100%;
+		left: 0px;
+	}
+	.mobile-links .nav-link {
+		display: block;
+		border-bottom: 1px solid white;
+	}
+
+	.mobile-links .nav-link:last-child {
+		border-bottom: none;
+	}
+
+}

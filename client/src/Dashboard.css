@@ -78,3 +78,13 @@ and (-webkit-min-device-pixel-ratio: 2) {
     max-width: 95%;
   }
 }
+
+@media only screen
+and (max-device-width : 500px) {
+  .header-container {
+    height: 200px;
+  }
+  .dashboard-logo {
+    width: 95%;
+  }
+}
