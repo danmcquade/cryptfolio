@@ -132,7 +132,7 @@ class AddPosition extends Component {
               <p>Shares <input className='edit-input' type='text' name='shares' /></p>
               <p>Price <input className='edit-input' type='text' name='price' /></p>
               <p>Date <input className='edit-input' id='datePicker' type='date' name='date' /></p>
-              <p className='add-button'><button onClick={() => { this.handleSubmit }}>Add</button></p>
+              <p className='add-button'><button onClick={() => { this.handleSubmit() }}>Add</button></p>
             </form>
           </div>
         </div>

@@ -115,7 +115,6 @@ class Dashboard extends Component {
           </div>
           <Modal
             id='Currency Details'
-            closeTimeoutMS={150}
             isOpen={detailModalIsOpen}
             style={modalStyle}
             closeTimeoutMS={500}
