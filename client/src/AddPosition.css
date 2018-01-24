@@ -1,5 +1,6 @@
 .add-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -29,4 +30,24 @@
 
 .add-form {
   text-align: right;
+}
+
+@media only screen
+and (max-width : 550px) {
+  .add-coin-detail {
+    text-align: center;
+  }
+
+  .add-coin-detail-image {
+    left: -15px;
+    top: 50px;
+  }
+
+  .add-form {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  .add-button {
+    text-align: center;
+  }
 }
