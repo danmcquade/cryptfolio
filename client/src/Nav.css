@@ -104,7 +104,7 @@ nav .nav-avatar img {
 	transition: opacity 500ms ease-in-out;
 }
 
-.mobilenav {
+.mobile-nav {
 	display: none;
 }
 
@@ -120,22 +120,21 @@ and (max-width : 550px) {
 
 	nav .nav-logo {
 		position: absolute;
-		left: 10px;
+		left: 15px;
+		top: 7px;
 	}
-	.topnav {
+	.main-nav {
 		display: none;
 	}
-	.mobilenav {
-		height: 58px;
+	.mobile-nav {
+		height: 68px;
 		display: block;
 	}
 	.nav-avatar {
 		display: none;
 	}
 	.mobile-links {
-		top: 60px;
-		width: 100%;
-		left: 0px;
+		padding-top: 5px;
 	}
 	.mobile-links .nav-link {
 		display: block;

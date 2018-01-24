@@ -50,13 +50,13 @@ class Nav extends Component {
   expandNav (e) {
     console.log('expanding nav')
     let linksEl = document.querySelector('.mobile-links')
-    let mobileNav = document.querySelector('.mobilenav')
+    let mobileNav = document.querySelector('.mobile-nav')
     if (linksEl.style.display === 'none') {
       linksEl.style.display = 'block'
       mobileNav.style.height = 'auto'
     } else {
       linksEl.style.display = 'none'
-      mobileNav.style.height = '58px'
+      mobileNav.style.height = '68px'
     }
     e.preventDefault()
   }
@@ -64,19 +64,20 @@ class Nav extends Component {
   hideNav () {
     console.log('hiding nav')
     let linksEl = document.querySelector('.mobile-links')
-    let mobileNav = document.querySelector('.mobilenav')
+    let mobileNav = document.querySelector('.mobile-nav')
     linksEl.style.display = 'none'
-    mobileNav.style.height = '58px'
+    mobileNav.style.height = '68px'
   }
 
   render () {
     let loginButton
     let avatarImg = null
-    const navExp = {
-      fontSize: '35px',
+    const hamburger = {
+      fontSize: '45px',
       color: '#ffffff',
       textDecoration: 'none',
       right: '15px',
+      top: '3px',
       position: 'absolute'
 
     }
@@ -93,7 +94,7 @@ class Nav extends Component {
     }
     return (
       <div>
-        <nav id='#myTopnav' className='topnav'>
+        <nav className='main-nav'>
           <Link to='/'><img className='nav-logo' alt='Cryptfolio Logo' src='https://s3.amazonaws.com/cryptfolio-cdn/logo.png' /></Link>
           <Link className='nav-link' to='/' >Home</Link>
           <Link className='nav-link' to='/positions'>Positions</Link>
@@ -101,9 +102,9 @@ class Nav extends Component {
           {avatarImg}
         </nav>
 
-        <nav id='#responsiveNav' className='mobilenav'>
+        <nav className='mobile-nav'>
           <Link to='/' onClick={() => { this.hideNav() }}><img className='nav-logo' alt='Cryptfolio Logo' src='https://s3.amazonaws.com/cryptfolio-cdn/logo.png' /></Link>
-          <a href='' style={navExp} className='icon' onClick={(e) => { this.expandNav(e) }}>☰</a>
+          <a href='' style={hamburger} className='icon' onClick={(e) => { this.expandNav(e) }}>☰</a>
           <div className='mobile-links' style={mobStyle}>
             <Link className='nav-link' to='/' onClick={() => { this.hideNav() }}>Home</Link>
             <Link className='nav-link' to='/positions' onClick={() => { this.hideNav() }}>Positions</Link>
