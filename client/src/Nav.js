@@ -48,7 +48,6 @@ class Nav extends Component {
   }
 
   expandNav (e) {
-    console.log('expanding nav')
     let linksEl = document.querySelector('.mobile-links')
     let mobileNav = document.querySelector('.mobile-nav')
     if (linksEl.style.display === 'none') {
@@ -62,7 +61,6 @@ class Nav extends Component {
   }
 
   hideNav () {
-    console.log('hiding nav')
     let linksEl = document.querySelector('.mobile-links')
     let mobileNav = document.querySelector('.mobile-nav')
     linksEl.style.display = 'none'
