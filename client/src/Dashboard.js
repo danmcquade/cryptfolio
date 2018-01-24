@@ -118,6 +118,7 @@ class Dashboard extends Component {
             closeTimeoutMS={150}
             isOpen={detailModalIsOpen}
             style={modalStyle}
+            closeTimeoutMS={500}
             onAfterOpen={this.handleOnAfterOpenModal}
             onRequestClose={this.toggleModal}>
             <DetailModal loggedIn={this.props.loggedIn} coin_id={this.state.coin_id} toggleModal={this.toggleModal} currencyFormat={this.props.currencyFormat} />
