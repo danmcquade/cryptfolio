@@ -212,6 +212,7 @@ class Positions extends Component {
           <Header />
           <h1>Positions</h1>
           <h3>Must be logged in to view positions</h3>
+          <strong>(Try login/password demo/demo for sample data)</strong>
         </div>
       )
     } else {
