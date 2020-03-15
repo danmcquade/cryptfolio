@@ -58,7 +58,7 @@ class PositionsController < ApplicationController
     @all_positions = current_user.positions.all
     @all_positions.each do |pos|
       coin = Coin.find(pos.coin_id)
-      url = "https://api.coinmarketcap.com/v1/ticker/#{coin.api_id}/"
+      url = "https://api.coinlore.net/api/ticker/?id=#{coin.api_id}"
       resp = Net::HTTP.get_response(URI.parse(url))
       data = JSON.parse(resp.body)
       cur_price = data[0]['price_usd'].to_f
